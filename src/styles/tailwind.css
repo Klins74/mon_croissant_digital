@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background Colors */
+    --color-background: #FEFCF8; /* cream-50 */
+    --color-foreground: #2C1810; /* dark-chocolate */
+    --color-card: #F5F2ED; /* warm-gray-50 */
+    --color-card-foreground: #2C1810; /* dark-chocolate */
+    --color-popover: #FEFCF8; /* cream-50 */
+    --color-popover-foreground: #2C1810; /* dark-chocolate */
+    --color-muted: #F5F2ED; /* warm-gray-50 */
+    --color-muted-foreground: #6B4423; /* medium-brown */
+    
+    /* Brand Colors */
+    --color-primary: #D4A574; /* croissant-gold */
+    --color-primary-foreground: #2C1810; /* dark-chocolate */
+    --color-secondary: #8B4513; /* chocolate-brown */
+    --color-secondary-foreground: #FEFCF8; /* cream-50 */
+    --color-accent: #E8B86D; /* buttery-highlight */
+    --color-accent-foreground: #2C1810; /* dark-chocolate */
+    
+    /* Interactive Elements */
+    --color-border: rgba(139, 69, 19, 0.2); /* chocolate-brown-20 */
+    --color-input: #FEFCF8; /* cream-50 */
+    --color-ring: #D4A574; /* croissant-gold */
+    
+    /* Status Colors */
+    --color-success: #7A9B57; /* herb-green */
+    --color-success-foreground: #FEFCF8; /* cream-50 */
+    --color-warning: #D4A574; /* croissant-gold */
+    --color-warning-foreground: #2C1810; /* dark-chocolate */
+    --color-error: #A0522D; /* burnt-sienna */
+    --color-error-foreground: #FEFCF8; /* cream-50 */
+    --color-destructive: #A0522D; /* burnt-sienna */
+    --color-destructive-foreground: #FEFCF8; /* cream-50 */
+    
+    /* French Heritage Accent */
+    --color-french-blue: #2E5984; /* french-blue */
+    --color-french-blue-foreground: #FEFCF8; /* cream-50 */
+    --color-french-red: #C9302C; /* french-red */
+    --color-french-red-foreground: #FEFCF8; /* cream-50 */
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-accent: 'Dancing Script', cursive;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem; /* 8px */
+    --spacing-sm: 0.75rem; /* 12px */
+    --spacing-md: 1.125rem; /* 18px */
+    --spacing-lg: 1.5rem; /* 24px */
+    --spacing-xl: 2.25rem; /* 36px */
+    --spacing-2xl: 3.375rem; /* 54px */
+    
+    /* Shadows */
+    --shadow-warm: 0 4px 12px rgba(212, 165, 116, 0.15);
+    --shadow-warm-lg: 0 8px 24px rgba(212, 165, 116, 0.2);
+    --shadow-chocolate: 0 4px 20px rgba(139, 69, 19, 0.1);
+    
+    /* Border Radius */
+    --radius: 0.5rem; /* 8px */
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Artisanal texture overlays */
+  .texture-flour::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="2" fill="%23D4A574" opacity="0.1"/><circle cx="10" cy="10" r="1" fill="%23D4A574" opacity="0.05"/><circle cx="50" cy="20" r="1.5" fill="%23D4A574" opacity="0.08"/></svg>');
+    mix-blend-mode: multiply;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  
+  /* Golden hour photography treatment */
+  .golden-hour {
+    filter: sepia(0.2) saturate(1.1) brightness(1.05);
+  }
+  
+  /* French typography rhythm */
+  .french-heading {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  
+  /* Certification trust elements */
+.certification-badge  {
+    @apply border-2 rounded-lg p-3 transition-all duration-300;
+  }
+  
+  .certification-badge:hover {
+    @apply border-primary scale-105 brightness-110;
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.4);
+  }
+  
+  /* Warm button styles */
+.btn-warm  {
+    @apply bg-primary text-primary-foreground transition-all duration-300;
+    box-shadow: var(--shadow-warm);
+  }
+  
+  .btn-warm:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-warm-lg);
+  }
+  
+  /* Artisanal card styles */
+  .artisanal-card {
+    @apply bg-card text-card-foreground rounded-lg border border-border;
+    box-shadow: var(--shadow-chocolate);
+  }
+  
+  /* Parallax container */
+  .parallax-container {
+    perspective: 1000px;
+    overflow: hidden;
+  }
+  
+  .parallax-layer {
+    transform-style: preserve-3d;
+  }
+  
+  /* Pulse animation for delivery zones */
+  @keyframes delivery-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  .delivery-pulse {
+    animation: delivery-pulse 2s infinite;
+  }
+  
+  /* Smooth accordion animations */
+  .accordion-content {
+    transition: max-height 0.3s ease-out;
+  }
+  
+  /* Cultural bridge micro-animations */
+  .cultural-element {
+    @apply transition-all duration-300;
+  }
+  
+  .cultural-element:hover {
+    @apply scale-110 brightness-110;
+  }
+}
+
+@layer utilities {
+  /* Custom spacing utilities */
+  .space-artisanal > * + * {
+    margin-top: var(--spacing-md);
+  }
+  
+  /* French elegance utilities */
+  .text-french-elegant {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  
+  .text-artisanal {
+    font-family: var(--font-accent);
+  }
+  
+  /* Warm glow utilities */
+  .glow-warm {
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.4);
+  }
+  
+  .glow-chocolate {
+    box-shadow: 0 0 20px rgba(139, 69, 19, 0.3);
+  }
+  
+  /* Vignette effect */
+  .vignette::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, transparent 50%, rgba(44, 24, 16, 0.1) 100%);
+    pointer-events: none;
+  }
+}
