@@ -135,7 +135,7 @@ const HeroSection = ({ onOrderNow, onExploreMenu }) => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="flex items-center justify-center lg:justify-start space-x-6 mt-8">
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6 mt-8">
 
               <div className="flex items-center space-x-2">
                 <Icon name="Clock" size={20} className="text-primary" />
