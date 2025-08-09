@@ -157,6 +157,37 @@ const OrderingChannels = () => {
           </div>
         </div>
 
+        {/* WhatsApp Order Form */}
+        <div className="mb-8">
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              const name = e.target.name.value;
+              const phone = e.target.phone.value;
+              const order = e.target.order.value;
+              const message = `Здравствуйте! Меня зовут ${name}, телефон: ${phone}. Я хочу заказать: ${order}`;
+              window.open(`https://wa.me/77771234567?text=${encodeURIComponent(message)}`, '_blank');
+            }}
+            className="space-y-4"
+          >
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1">Имя</label>
+              <input name="name" type="text" required className="w-full p-2 border rounded" placeholder="Ваше имя" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1">Телефон</label>
+              <input name="phone" type="text" required className="w-full p-2 border rounded" placeholder="+7..." />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1">Заказ</label>
+              <textarea name="order" required className="w-full p-2 border rounded" placeholder="Что хотите заказать?" />
+            </div>
+            <Button type="submit" variant="success" size="lg" iconName="MessageCircle" iconPosition="left" fullWidth>
+              Отправить в WhatsApp
+            </Button>
+          </form>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-4">
           {supportNumbers?.map((support, index) => (
             <div key={index} className="p-4 bg-muted rounded-lg">

@@ -10,7 +10,7 @@ const Select = React.forwardRef(({
     options = [],
     value,
     defaultValue,
-    placeholder = "Select an option",
+    placeholder = "Выберите опцию",
     multiple = false,
     disabled = false,
     required = false,
@@ -48,7 +48,7 @@ const Select = React.forwardRef(({
             const selectedOptions = options?.filter(opt => value?.includes(opt?.value));
             if (selectedOptions?.length === 0) return placeholder;
             if (selectedOptions?.length === 1) return selectedOptions?.[0]?.label;
-            return `${selectedOptions?.length} items selected`;
+            return `${selectedOptions?.length} элементов выбрано`;
         }
 
         const selectedOption = options?.find(opt => opt?.value === value);
@@ -163,7 +163,7 @@ const Select = React.forwardRef(({
                     multiple={multiple}
                     required={required}
                 >
-                    <option value="">Select...</option>
+                    <option value="">Выберите...</option>
                     {options?.map(option => (
                         <option key={option?.value} value={option?.value}>
                             {option?.label}
@@ -179,7 +179,7 @@ const Select = React.forwardRef(({
                                 <div className="relative">
                                     <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                                     <Input
-                                        placeholder="Search options..."
+                                        placeholder="Поиск опций..."
                                         value={searchTerm}
                                         onChange={handleSearchChange}
                                         className="pl-8"
@@ -191,7 +191,7 @@ const Select = React.forwardRef(({
                         <div className="py-1 max-h-60 overflow-auto">
                             {filteredOptions?.length === 0 ? (
                                 <div className="px-3 py-2 text-sm text-muted-foreground">
-                                    {searchTerm ? 'No options found' : 'No options available'}
+                                    {searchTerm ? 'Опции не найдены' : 'Нет доступных опций'}
                                 </div>
                             ) : (
                                 filteredOptions?.map((option) => (

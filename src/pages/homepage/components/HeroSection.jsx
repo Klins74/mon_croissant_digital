@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import Button from '../../../components/ui/Button';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
+import translations from '../../../translations';
 
-const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreMenu, setCurrentLanguage }) => {
+const HeroSection = ({ onOrderNow, onExploreMenu }) => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
 
@@ -13,33 +14,10 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
   { code: 'en', name: 'English', flag: '🇺🇸' },
   { code: 'kz', name: 'Қазақша', flag: '🇰🇿' }];
 
-
-  const heroContent = {
-    ru: {
-      headline: "Подлинное французское мастерство, всегда доступно",
-      subheadline: "Мастера-пекари создают премиальную халяльную выпечку 24/7 по традиционным французским технологиям",
-      orderNow: "Заказать сейчас",
-      exploreMenu: "Изучить меню",
-      halalCertified: "Халяль сертифицировано",
-      available247: "Доступно 24/7"
-    },
-    en: {
-      headline: "Authentic French Artistry, Available Always",
-      subheadline: "Master bakers crafting premium halal pastries 24/7 with traditional French techniques",
-      orderNow: "Order Now",
-      exploreMenu: "Explore Menu",
-      halalCertified: "Halal Certified",
-      available247: "Available 24/7"
-    },
-    kz: {
-      headline: "Шынайы француз өнері, әрқашан қолжетімді",
-      subheadline: "Шебер наубайшылар дәстүрлі француз техникасымен 24/7 премиум халал тәттілер жасайды",
-      orderNow: "Қазір тапсырыс беру",
-      exploreMenu: "Мәзірді зерттеу",
-      halalCertified: "Халал сертификатталған",
-      available247: "24/7 қолжетімді"
-    }
-  };
+  const lang = 'ru';
+  const t = translations[lang];
+  const heroContent = t.hero;
+  const commonContent = t.common;
 
   const videoSources = [
   "https://images.pexels.com/photos/4686821/pexels-photo-4686821.jpeg",
@@ -48,22 +26,13 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
 
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('selectedLanguage');
-    if (savedLanguage && ['ru', 'en', 'kz']?.includes(savedLanguage)) {
-      setCurrentLanguage(savedLanguage);
-    } else {
-      setCurrentLanguage('ru'); // Set Russian as default
-    }
-  }, []);
-
-  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentVideoIndex((prev) => (prev + 1) % videoSources?.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-  const content = heroContent?.[currentLanguage] || heroContent?.ru;
+  const content = heroContent;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-card to-muted">
@@ -89,51 +58,6 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/50"></div>
         <div className="absolute inset-0 texture-flour"></div>
       </div>
-      {/* Language Selector */}
-      <div className="absolute top-20 right-4 lg:right-8 z-50">
-        <div className="relative">
-          <button
-            onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
-            className="flex items-center space-x-2 px-4 py-2 bg-card/90 backdrop-blur-md border border-border rounded-lg shadow-warm hover:shadow-warm-lg transition-all duration-300">
-
-            <span className="text-lg">
-              {languages?.find((lang) => lang?.code === currentLanguage)?.flag}
-            </span>
-            <span className="text-sm font-medium text-card-foreground">
-              {languages?.find((lang) => lang?.code === currentLanguage)?.name}
-            </span>
-            <Icon name="ChevronDown" size={16} className="text-muted-foreground" />
-          </button>
-
-          {isLanguageDropdownOpen &&
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute top-full right-0 mt-2 w-48 bg-popover border border-border rounded-lg shadow-warm-lg z-60">
-
-              <div className="py-2">
-                {languages?.map((lang) =>
-              <button
-                key={lang?.code}
-                onClick={() => {
-                  onLanguageChange(lang?.code);
-                  setIsLanguageDropdownOpen(false);
-                }}
-                className={`flex items-center space-x-3 w-full px-4 py-2 text-sm transition-colors ${
-                currentLanguage === lang?.code ?
-                'bg-primary text-primary-foreground' :
-                'text-popover-foreground hover:bg-muted'}`
-                }>
-
-                    <span className="text-lg">{lang?.flag}</span>
-                    <span>{lang?.name}</span>
-                  </button>
-              )}
-              </div>
-            </motion.div>
-          }
-        </div>
-      </div>
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -152,9 +76,9 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
               className="inline-flex items-center space-x-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
 
               <Icon name="Award" size={16} className="text-primary" />
-              <span className="text-sm font-medium text-primary">{content?.halalCertified}</span>
+              <span className="text-sm font-medium text-primary">{heroContent?.halalCertified}</span>
               <span className="text-muted-foreground">•</span>
-              <span className="text-sm font-medium text-primary">{content?.available247}</span>
+              <span className="text-sm font-medium text-primary">{heroContent?.available247}</span>
             </motion.div>
 
             {/* Headline */}
@@ -192,7 +116,7 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
                 iconPosition="left"
                 onClick={onOrderNow}>
 
-                {content?.orderNow}
+                {commonContent?.orderNow}
               </Button>
               <Button
                 variant="outline"
@@ -202,7 +126,7 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
                 iconPosition="left"
                 onClick={onExploreMenu}>
 
-                {content?.exploreMenu}
+                {commonContent?.exploreMenu}
               </Button>
             </motion.div>
 
@@ -215,15 +139,15 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
 
               <div className="flex items-center space-x-2">
                 <Icon name="Clock" size={20} className="text-primary" />
-                <span className="text-sm text-muted-foreground">24/7 Fresh</span>
+                <span className="text-sm text-muted-foreground">{heroContent?.fresh247}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Icon name="Shield" size={20} className="text-primary" />
-                <span className="text-sm text-muted-foreground">Halal Certified</span>
+                <span className="text-sm text-muted-foreground">{commonContent?.halalCertified}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Icon name="Truck" size={20} className="text-primary" />
-                <span className="text-sm text-muted-foreground">Fast Delivery</span>
+                <span className="text-sm text-muted-foreground">{heroContent?.fastDelivery}</span>
               </div>
             </motion.div>
           </motion.div>
@@ -239,11 +163,11 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
               <div className="artisanal-card p-6 bg-card/90 backdrop-blur-md">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-heading font-semibold text-card-foreground">
-                    Live Production
+                    {heroContent?.liveProduction}
                   </h3>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-muted-foreground">Live</span>
+                    <span className="text-sm text-muted-foreground">{heroContent?.live}</span>
                   </div>
                 </div>
 
@@ -251,7 +175,7 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
                   <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <Icon name="Cookie" size={20} className="text-primary" />
-                      <span className="text-sm font-medium">Croissants</span>
+                      <span className="text-sm font-medium">{heroContent?.croissants}</span>
                     </div>
                     <span className="text-sm text-muted-foreground">3:24 AM</span>
                   </div>
@@ -259,7 +183,7 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
                   <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <Icon name="Cake" size={20} className="text-primary" />
-                      <span className="text-sm font-medium">Pain au Chocolat</span>
+                      <span className="text-sm font-medium">{heroContent?.painAuChocolat}</span>
                     </div>
                     <span className="text-sm text-muted-foreground">2:45 AM</span>
                   </div>
@@ -267,7 +191,7 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
                   <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <Icon name="Coffee" size={20} className="text-primary" />
-                      <span className="text-sm font-medium">Fresh Bread</span>
+                      <span className="text-sm font-medium">{heroContent?.freshBread}</span>
                     </div>
                     <span className="text-sm text-muted-foreground">1:15 AM</span>
                   </div>
@@ -276,7 +200,7 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
                 <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
                   <div className="flex items-center space-x-2 mb-2">
                     <Icon name="Users" size={16} className="text-primary" />
-                    <span className="text-sm font-medium text-primary">Master Bakers Active</span>
+                    <span className="text-sm font-medium text-primary">{heroContent?.masterBakersActive}</span>
                   </div>
                   <div className="text-2xl font-heading font-bold text-primary">3</div>
                 </div>
@@ -297,7 +221,7 @@ const HeroSection = ({ currentLanguage, onLanguageChange, onOrderNow, onExploreM
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center space-y-2">
 
-          <span className="text-sm text-muted-foreground">Scroll to explore</span>
+          <span className="text-sm text-muted-foreground">{heroContent?.scrollToExplore}</span>
           <Icon name="ChevronDown" size={20} className="text-muted-foreground" />
         </motion.div>
       </motion.div>

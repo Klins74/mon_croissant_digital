@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
+import translations from '../../translations';
 
 const Header = ({ isCollapsed = false }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const lang = 'ru';
+  const t = translations[lang];
 
   const navigationItems = [
-    { name: 'Home', path: '/homepage', icon: 'Home' },
-    { name: 'Menu', path: '/interactive-menu-ordering', icon: 'UtensilsCrossed' },
-    { name: 'Delivery', path: '/delivery-ordering-information', icon: 'Truck' },
-    { name: 'Reviews', path: '/customer-reviews-community', icon: 'Star' },
-    { name: 'Contact', path: '/contact-multi-channel-support', icon: 'MessageCircle' },
+    { name: t.common.home, path: '/homepage', icon: 'Home' },
+    { name: t.common.menuAndOrdering, path: '/interactive-menu-ordering', icon: 'UtensilsCrossed' },
+    { name: t.common.deliveryInfo, path: '/delivery-ordering-information', icon: 'Truck' },
+    { name: t.common.contactSupport, path: '/contact-multi-channel-support', icon: 'MessageCircle' },
   ];
 
   useEffect(() => {
@@ -35,11 +37,6 @@ const Header = ({ isCollapsed = false }) => {
 
   const isActivePath = (path) => {
     return location?.pathname === path;
-  };
-
-  const handleNavigation = (path) => {
-    window.location.href = path;
-    closeMobileMenu();
   };
 
   return (
@@ -66,7 +63,7 @@ const Header = ({ isCollapsed = false }) => {
             </div>
             <div className="flex flex-col">
               <h1 className="text-lg font-heading font-semibold text-foreground leading-tight">
-                DayInFood
+                Mon Croissant
               </h1>
               <span className="text-xs font-accent text-muted-foreground -mt-1">
                 Digital
@@ -75,48 +72,11 @@ const Header = ({ isCollapsed = false }) => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
-            {navigationItems?.slice(0, 4)?.map((item) => (
-              <button
-                key={item?.path}
-                onClick={() => handleNavigation(item?.path)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  isActivePath(item?.path)
-                    ? 'bg-primary text-primary-foreground shadow-warm'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                }`}
-              >
-                <Icon name={item?.icon} size={16} />
-                <span>{item?.name}</span>
-              </button>
-            ))}
-            
-            {/* More Menu Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200">
-                <Icon name="MoreHorizontal" size={16} />
-                <span>More</span>
-              </button>
-              
-              <div className="absolute right-0 top-full mt-2 w-48 bg-popover border border-border rounded-lg shadow-warm-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="py-2">
-                  {navigationItems?.slice(4)?.map((item) => (
-                    <button
-                      key={item?.path}
-                      onClick={() => handleNavigation(item?.path)}
-                      className={`flex items-center space-x-3 w-full px-4 py-2 text-sm transition-colors ${
-                        isActivePath(item?.path)
-                          ? 'bg-primary text-primary-foreground'
-                          : 'text-popover-foreground hover:bg-muted'
-                      }`}
-                    >
-                      <Icon name={item?.icon} size={16} />
-                      <span>{item?.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <nav className="hidden lg:flex items-center space-x-6">
+            <Link to="/homepage" className="text-sm font-medium text-foreground hover:text-primary transition-colors">{t.common.home}</Link>
+            <Link to="/interactive-menu-ordering" className="text-sm font-medium text-foreground hover:text-primary transition-colors">{t.common.menuAndOrdering}</Link>
+            <Link to="/delivery-ordering-information" className="text-sm font-medium text-foreground hover:text-primary transition-colors">{t.common.deliveryInfo}</Link>
+            <Link to="/contact-multi-channel-support" className="text-sm font-medium text-foreground hover:text-primary transition-colors">{t.common.contactSupport}</Link>
           </nav>
 
           {/* Right Section */}
@@ -129,17 +89,18 @@ const Header = ({ isCollapsed = false }) => {
               iconPosition="left"
               className="hidden sm:flex"
             >
-              Cart
+              Корзина
             </Button>
 
             {/* Order Now Button */}
             <Button
+              as={Link}
+              to="/interactive-menu-ordering"
               variant="default"
               size="sm"
               className="hidden sm:flex btn-warm"
-              onClick={() => handleNavigation('/interactive-menu-ordering')}
             >
-              Order Now
+              {t.common.orderNow}
             </Button>
 
             {/* Mobile Menu Toggle */}
@@ -163,9 +124,10 @@ const Header = ({ isCollapsed = false }) => {
           <nav className="px-4 py-4 bg-card border-t border-border">
             <div className="space-y-2">
               {navigationItems?.map((item) => (
-                <button
+                <Link
                   key={item?.path}
-                  onClick={() => handleNavigation(item?.path)}
+                  to={item?.path}
+                  onClick={closeMobileMenu}
                   className={`flex items-center space-x-3 w-full px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActivePath(item?.path)
                       ? 'bg-primary text-primary-foreground shadow-warm'
@@ -174,7 +136,7 @@ const Header = ({ isCollapsed = false }) => {
                 >
                   <Icon name={item?.icon} size={18} />
                   <span>{item?.name}</span>
-                </button>
+                </Link>
               ))}
               
               {/* Mobile Action Buttons */}
@@ -186,16 +148,18 @@ const Header = ({ isCollapsed = false }) => {
                   iconPosition="left"
                   fullWidth
                 >
-                  View Cart
+                  Посмотреть корзину
                 </Button>
                 <Button
+                  as={Link}
+                  to="/interactive-menu-ordering"
                   variant="default"
                   size="sm"
                   fullWidth
                   className="btn-warm"
-                  onClick={() => handleNavigation('/interactive-menu-ordering')}
+                  onClick={closeMobileMenu}
                 >
-                  Order Now
+                  {t.common.orderNow}
                 </Button>
               </div>
             </div>

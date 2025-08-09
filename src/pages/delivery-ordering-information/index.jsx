@@ -7,36 +7,37 @@ import DeliveryZoneMap from './components/DeliveryZoneMap';
 import OrderingChannels from './components/OrderingChannels';
 import DeliveryScheduling from './components/DeliveryScheduling';
 import PricingTransparency from './components/PricingTransparency';
-import CustomerTestimonials from './components/CustomerTestimonials';
+import translations from '../../translations';
+import { Link } from 'react-router-dom';
 
 const DeliveryOrderingInformation = () => {
+  const t = translations.ru;
   const [activeTab, setActiveTab] = useState('zones');
 
   const tabs = [
-    { id: 'zones', label: 'Delivery Zones', icon: 'MapPin' },
-    { id: 'ordering', label: 'How to Order', icon: 'Smartphone' },
-    { id: 'scheduling', label: 'Scheduling', icon: 'Calendar' },
-    { id: 'pricing', label: 'Pricing', icon: 'DollarSign' },
-    { id: 'reviews', label: 'Customer Reviews', icon: 'Star' }
+    { id: 'zones', label: 'Зоны доставки', icon: 'MapPin' },
+    { id: 'ordering', label: 'Как заказать', icon: 'Smartphone' },
+    { id: 'scheduling', label: 'Расписание', icon: 'Calendar' },
+    { id: 'pricing', label: 'Цены', icon: 'DollarSign' },
   ];
 
   const quickStats = [
-    { label: '24/7 Delivery', value: 'Always Open', icon: 'Clock', color: 'text-success' },
-    { label: 'Average Time', value: '25-30 min', icon: 'Timer', color: 'text-primary' },
-    { label: 'Delivery Zones', value: '4 Districts', icon: 'MapPin', color: 'text-accent' },
-    { label: 'Minimum Order', value: '₸3,000', icon: 'ShoppingCart', color: 'text-warning' }
+    { label: 'Доставка 24/7', value: 'Всегда открыто', icon: 'Clock', color: 'text-success' },
+    { label: 'Среднее время', value: '25-30 мин', icon: 'Timer', color: 'text-primary' },
+    { label: 'Зоны доставки', value: '4 района', icon: 'MapPin', color: 'text-accent' },
+    { label: 'Минимальный заказ', value: '₸3,000', icon: 'ShoppingCart', color: 'text-warning' }
   ];
 
   const emergencyContacts = [
-    { type: 'WhatsApp', number: '+7 777 123 4567', available: '24/7' },
-    { type: 'Phone', number: '+7 727 123 4567', available: '24/7' },
-    { type: 'Email', email: 'delivery@moncroissant.kz', available: '24/7' }
+    { type: 'Phone', number: t.common.phone, available: '24/7' },
+    { type: 'Email', email: t.common.email, available: '24/7' },
+    { type: 'WhatsApp', number: t.common.whatsapp, available: '24/7' },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Delivery & Ordering Information - Mon Croissant Digital</title>
+        <title>Информация о доставке и заказах - Mon Croissant Digital</title>
         <meta name="description" content="Complete guide to Mon Croissant's 24/7 delivery service. View delivery zones, pricing, scheduling options, and customer reviews. Order fresh French pastries anytime." />
         <meta name="keywords" content="bakery delivery, 24/7 service, delivery zones, ordering guide, fresh pastries, Mon Croissant" />
       </Helmet>
@@ -50,8 +51,8 @@ const DeliveryOrderingInformation = () => {
                 <Icon name="Truck" size={40} className="text-primary" />
               </div>
               <h1 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
-                Delivery & Ordering
-                <span className="block text-primary">Information</span>
+Доставка и заказы
+                <span className="block text-primary">Информация</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Experience seamless 24/7 delivery service with transparent pricing, flexible scheduling, and guaranteed freshness. Your favorite French pastries delivered exactly when you need them.
@@ -78,7 +79,7 @@ const DeliveryOrderingInformation = () => {
               <div className="flex items-center justify-center space-x-3 mb-4">
                 <Icon name="Phone" size={24} className="text-success" />
                 <h3 className="text-lg font-heading font-semibold text-foreground">
-                  Need Immediate Help?
+Нужна срочная помощь?
                 </h3>
               </div>
               <div className="grid md:grid-cols-3 gap-4">
@@ -127,7 +128,6 @@ const DeliveryOrderingInformation = () => {
             {activeTab === 'ordering' && <OrderingChannels />}
             {activeTab === 'scheduling' && <DeliveryScheduling />}
             {activeTab === 'pricing' && <PricingTransparency />}
-            {activeTab === 'reviews' && <CustomerTestimonials />}
           </div>
         </section>
 
@@ -135,7 +135,7 @@ const DeliveryOrderingInformation = () => {
         <section className="bg-gradient-to-r from-primary to-accent py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary-foreground mb-4">
-              Ready to Order?
+Готовы сделать заказ?
             </h2>
             <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
               Experience the convenience of 24/7 French bakery delivery. Fresh pastries, transparent pricing, and reliable service - all just a click away.
@@ -146,9 +146,10 @@ const DeliveryOrderingInformation = () => {
                 size="lg"
                 iconName="UtensilsCrossed"
                 iconPosition="left"
-                onClick={() => window.location.href = '/interactive-menu-ordering'}
+                as={Link}
+                to="/interactive-menu-ordering"
               >
-                Browse Menu & Order
+Посмотреть меню и заказать
               </Button>
               <Button
                 variant="outline"
@@ -156,9 +157,11 @@ const DeliveryOrderingInformation = () => {
                 iconName="MessageCircle"
                 iconPosition="left"
                 className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-                onClick={() => window.open('https://wa.me/77771234567', '_blank')}
+                as={Link}
+                to={`https://wa.me/${t.common.whatsapp.replace(/[^0-9]/g, '')}`}
+                target="_blank"
               >
-                WhatsApp Us
+Написать в WhatsApp
               </Button>
             </div>
           </div>
@@ -186,42 +189,40 @@ const DeliveryOrderingInformation = () => {
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Authentic French bakery with 24/7 delivery service across the city.
+Подлинная французская пекарня с службой доставки 24/7 по всему городу.
                 </p>
               </div>
 
               <div>
-                <h4 className="font-medium text-foreground mb-4">Quick Links</h4>
+                <h4 className="font-medium text-foreground mb-4">Быстрые ссылки</h4>
                 <div className="space-y-2">
-                  <a href="/homepage" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Home
-                  </a>
-                  <a href="/interactive-menu-ordering" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Menu & Ordering
-                  </a>
-                  <a href="/customer-reviews-community" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Customer Reviews
-                  </a>
-                  <a href="/contact-multi-channel-support" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Contact Support
-                  </a>
+                  <Link to="/homepage" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+Главная
+                  </Link>
+                  <Link to="/interactive-menu-ordering" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+Меню и заказы
+                  </Link>
+                  {/* Removed Customer Reviews quick link */}
+                  <Link to="/contact-multi-channel-support" className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+Поддержка
+                  </Link>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-medium text-foreground mb-4">Contact Info</h4>
+                <h4 className="font-medium text-foreground mb-4">Контактная информация</h4>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <p>📱 +7 777 123 4567 (WhatsApp)</p>
-                  <p>📞 +7 727 123 4567</p>
-                  <p>✉️ delivery@moncroissant.kz</p>
-                  <p>🕒 24/7 Service Available</p>
+                  <p>📱 {t.common.whatsapp} (WhatsApp)</p>
+                  <p>📞 {t.common.phone}</p>
+                  <p>✉️ {t.common.email}</p>
+                  <p>🕒 Сервис доступен 24/7</p>
                 </div>
               </div>
             </div>
 
             <div className="border-t border-border mt-8 pt-8 text-center">
               <p className="text-sm text-muted-foreground">
-                © {new Date()?.getFullYear()} Mon Croissant Digital. All rights reserved.
+© {new Date()?.getFullYear()} Mon Croissant Digital. Все права защищены.
               </p>
             </div>
           </div>

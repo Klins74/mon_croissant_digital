@@ -2,141 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
+import translations from "../../../../src/translations.js";
 
 const TestimonialCarousel = ({ currentLanguage }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const testimonials = {
-    en: [
-      {
-        id: 1,
-        name: "Aida Nazarbayeva",
-        location: "Almaty, Kazakhstan",
-        rating: 5,
-        text: "The croissants are absolutely authentic! As someone who lived in Paris, I can confirm these taste just like the ones from French bakeries. The halal certification gives me complete peace of mind.",
-        image: "https://randomuser.me/api/portraits/women/32.jpg",
-        verified: true,
-        orderCount: 47
-      },
-      {
-        id: 2,
-        name: "Dmitry Volkov",
-        location: "Nur-Sultan, Kazakhstan",
-        rating: 5,
-        text: "Incredible that they bake fresh pastries at 3 AM! I work night shifts and Mon Croissant is a lifesaver. The quality never disappoints, even for late-night orders.",
-        image: "https://randomuser.me/api/portraits/men/45.jpg",
-        verified: true,
-        orderCount: 23
-      },
-      {
-        id: 3,
-        name: "Fatima Al-Rashid",
-        location: "Shymkent, Kazakhstan",
-        rating: 5,
-        text: "Finally, premium French pastries that are halal certified! The pain au chocolat is my family's favorite. Excellent delivery service and always fresh.",
-        image: "https://randomuser.me/api/portraits/women/28.jpg",
-        verified: true,
-        orderCount: 31
-      },
-      {
-        id: 4,
-        name: "Alexander Petrov",
-        location: "Almaty, Kazakhstan",
-        rating: 5,
-        text: "The attention to detail is remarkable. You can taste the quality ingredients and traditional French techniques. Worth every tenge!",
-        image: "https://randomuser.me/api/portraits/men/52.jpg",
-        verified: true,
-        orderCount: 18
-      }
-    ],
-    ru: [
-      {
-        id: 1,
-        name: "Аида Назарбаева",
-        location: "Алматы, Казахстан",
-        rating: 5,
-        text: "Круассаны абсолютно аутентичные! Как человек, который жил в Париже, могу подтвердить, что они на вкус точно такие же, как из французских пекарен. Халяльная сертификация дает мне полное спокойствие.",
-        image: "https://randomuser.me/api/portraits/women/32.jpg",
-        verified: true,
-        orderCount: 47
-      },
-      {
-        id: 2,
-        name: "Дмитрий Волков",
-        location: "Нур-Султан, Казахстан",
-        rating: 5,
-        text: "Невероятно, что они пекут свежую выпечку в 3 утра! Я работаю в ночную смену, и Mon Croissant - спасение. Качество никогда не подводит, даже при ночных заказах.",
-        image: "https://randomuser.me/api/portraits/men/45.jpg",
-        verified: true,
-        orderCount: 23
-      },
-      {
-        id: 3,
-        name: "Фатима Аль-Рашид",
-        location: "Шымкент, Казахстан",
-        rating: 5,
-        text: "Наконец-то премиальная французская выпечка с халяльной сертификацией! Пан-о-шоколя - любимое лакомство моей семьи. Отличная служба доставки и всегда свежее.",
-        image: "https://randomuser.me/api/portraits/women/28.jpg",
-        verified: true,
-        orderCount: 31
-      },
-      {
-        id: 4,
-        name: "Александр Петров",
-        location: "Алматы, Казахстан",
-        rating: 5,
-        text: "Внимание к деталям поразительное. Чувствуется качество ингредиентов и традиционные французские техники. Стоит каждой тенге!",
-        image: "https://randomuser.me/api/portraits/men/52.jpg",
-        verified: true,
-        orderCount: 18
-      }
-    ],
-    kz: [
-      {
-        id: 1,
-        name: "Айда Назарбаева",
-        location: "Алматы, Қазақстан",
-        rating: 5,
-        text: "Круассандар мүлдем түпнұсқа! Парижде тұрған адам ретінде, олардың дәмі француз наубайханаларындағыдай екенін растай аламын. Халал сертификаты маған толық тыныштық береді.",
-        image: "https://randomuser.me/api/portraits/women/32.jpg",
-        verified: true,
-        orderCount: 47
-      },
-      {
-        id: 2,
-        name: "Дмитрий Волков",
-        location: "Нұр-Сұлтан, Қазақстан",
-        rating: 5,
-        text: "Таң 3-те жаңа тәттілер пісіруі керемет! Мен түнгі ауысымда жұмыс істеймін, Mon Croissant - құтқарушы. Сапа ешқашан ренжітпейді, тіпті түнгі тапсырыстарда да.",
-        image: "https://randomuser.me/api/portraits/men/45.jpg",
-        verified: true,
-        orderCount: 23
-      },
-      {
-        id: 3,
-        name: "Фатима Әл-Рашид",
-        location: "Шымкент, Қазақстан",
-        rating: 5,
-        text: "Ақырында халал сертификатталған премиум француз тәттілері! Пан-о-шокола менің отбасымның сүйіктісі. Керемет жеткізу қызметі және әрқашан жаңа.",
-        image: "https://randomuser.me/api/portraits/women/28.jpg",
-        verified: true,
-        orderCount: 31
-      },
-      {
-        id: 4,
-        name: "Александр Петров",
-        location: "Алматы, Қазақстан",
-        rating: 5,
-        text: "Бөлшектерге көңіл бөлу таңғажайып. Ингредиенттердің сапасы мен дәстүрлі француз техникасы сезіледі. Әр теңгеге тұрарлық!",
-        image: "https://randomuser.me/api/portraits/men/52.jpg",
-        verified: true,
-        orderCount: 18
-      }
-    ]
-  };
 
-  const currentTestimonials = testimonials?.[currentLanguage] || testimonials?.en;
+
+  const currentTestimonials = translations?.[currentLanguage]?.testimonials?.list || translations?.ru?.testimonials?.list;
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -177,22 +51,7 @@ const TestimonialCarousel = ({ currentLanguage }) => {
     ));
   };
 
-  const sectionTitles = {
-    en: {
-      title: "What Our Customers Say",
-      subtitle: "Real experiences from our valued customers across Kazakhstan"
-    },
-    ru: {
-      title: "Что говорят наши клиенты",
-      subtitle: "Реальные отзывы наших ценных клиентов по всему Казахстану"
-    },
-    kz: {
-      title: "Клиенттеріміз не дейді",
-      subtitle: "Қазақстан бойынша құнды клиенттеріміздің нақты тәжірибелері"
-    }
-  };
-
-  const currentTitles = sectionTitles?.[currentLanguage] || sectionTitles?.en;
+  const currentTitles = translations?.[currentLanguage]?.testimonials?.titles || translations?.ru?.testimonials?.titles;
 
   return (
     <section className="py-16 lg:py-24 bg-background">

@@ -1,32 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/ui/Header';
 import HeroSection from './components/HeroSection';
 import LiveProductionCounter from './components/LiveProductionCounter';
 import QualityAssuranceSection from './components/QualityAssuranceSection';
-import TestimonialCarousel from './components/TestimonialCarousel';
-import HeritageSection from './components/HeritageSection';
+import TestimonialCarousel from "./components/TestimonialCarousel";
+import HeritageSection from "./components/HeritageSection";
 import DeliveryZoneSection from './components/DeliveryZoneSection';
+import translations from '../../translations';
 
 const Homepage = () => {
   const navigate = useNavigate();
-  const [currentLanguage, setCurrentLanguage] = useState('en');
-
-  // Load saved language preference on component mount
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('selectedLanguage');
-    if (savedLanguage && ['ru', 'en', 'kz']?.includes(savedLanguage)) {
-      setCurrentLanguage(savedLanguage);
-    } else {
-      setCurrentLanguage('ru'); // Set Russian as default
-    }
-  }, []);
-
-  // Handle language change and save to localStorage
-  const handleLanguageChange = (languageCode) => {
-    setCurrentLanguage(languageCode);
-    localStorage.setItem('selectedLanguage', languageCode);
-  };
+  const lang = 'ru'; // Or get from context/state
+  const t = translations[lang];
 
   // Navigation handlers
   const handleOrderNow = () => {
@@ -45,27 +31,17 @@ const Homepage = () => {
       <main className="pt-16">
         {/* Hero Section */}
         <HeroSection
-          currentLanguage={currentLanguage}
-          onLanguageChange={handleLanguageChange}
-          setCurrentLanguage={setCurrentLanguage}
           onOrderNow={handleOrderNow}
           onExploreMenu={handleExploreMenu}
         />
-
         {/* Live Production Counter */}
-        <LiveProductionCounter currentLanguage={currentLanguage} />
-
+        <LiveProductionCounter />
         {/* Quality Assurance Section */}
-        <QualityAssuranceSection currentLanguage={currentLanguage} />
-
-        {/* Testimonial Carousel */}
-        <TestimonialCarousel currentLanguage={currentLanguage} />
-
+        <QualityAssuranceSection />
         {/* Heritage Section */}
-        <HeritageSection currentLanguage={currentLanguage} />
-
+        <HeritageSection />
         {/* Delivery Zone Section */}
-        <DeliveryZoneSection currentLanguage={currentLanguage} />
+        <DeliveryZoneSection />
       </main>
       {/* Footer */}
       <footer className="bg-card border-t border-border py-12">
@@ -85,8 +61,8 @@ const Homepage = () => {
                   </svg>
                 </div>
                 <div className="flex flex-col">
-                  <h3 className="text-lg font-heading font-semibold text-card-foreground">
-                    DayInFood
+                  <h3 className="text-xl font-bold font-heading text-card-foreground">
+                    Mon Croissant
                   </h3>
                   <span className="text-xs font-accent text-muted-foreground -mt-1">
                     Digital
@@ -101,7 +77,7 @@ const Homepage = () => {
             {/* Quick Links */}
             <div className="md:col-span-1">
               <h4 className="text-sm font-heading font-semibold text-card-foreground mb-4">
-                Quick Links
+                {t.common.quickLinks}
               </h4>
               <ul className="space-y-2">
                 <li>
@@ -109,7 +85,7 @@ const Homepage = () => {
                     onClick={() => navigate('/interactive-menu-ordering')}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Menu & Ordering
+                    {t.common.menuAndOrdering}
                   </button>
                 </li>
                 <li>
@@ -117,23 +93,16 @@ const Homepage = () => {
                     onClick={() => navigate('/delivery-ordering-information')}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Delivery Info
+                    {t.common.deliveryInfo}
                   </button>
                 </li>
-                <li>
-                  <button
-                    onClick={() => navigate('/customer-reviews-community')}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Reviews
-                  </button>
-                </li>
+                {/* Removed Reviews navigation link */}
                 <li>
                   <button
                     onClick={() => navigate('/contact-multi-channel-support')}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Contact
+                    {t.common.contact}
                   </button>
                 </li>
               </ul>
@@ -142,14 +111,14 @@ const Homepage = () => {
             {/* Contact Info */}
             <div className="md:col-span-1">
               <h4 className="text-sm font-heading font-semibold text-card-foreground mb-4">
-                Contact
+                {t.common.contactInfo}
               </h4>
               <div className="space-y-2">
                 <div className="text-sm text-muted-foreground">
                   +7 (727) 123-4567
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  order@dayinfood.kz
+                  {t.common.email}
                 </div>
                 <div className="text-sm text-muted-foreground">
                   24/7 WhatsApp Поддержка
@@ -160,23 +129,23 @@ const Homepage = () => {
             {/* Certifications */}
             <div className="md:col-span-1">
               <h4 className="text-sm font-heading font-semibold text-card-foreground mb-4">
-                Certifications
+                {t.common.certifications}
               </h4>
               <div className="space-y-2">
-                <div className="text-sm text-muted-foreground">✓ Halal Certified</div>
-                <div className="text-sm text-muted-foreground">✓ EAEU Standards</div>
-                <div className="text-sm text-muted-foreground">✓ ISO 22000</div>
+                <div className="text-sm text-muted-foreground">✓ {t.common.halalCertified}</div>
+                <div className="text-sm text-muted-foreground">✓ {t.common.EAEUStandards}</div>
+                <div className="text-sm text-muted-foreground">✓ {t.common.ISO22000}</div>
               </div>
             </div>
           </div>
 
           {/* Bottom Bar */}
           <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between">
-            <div className="text-sm text-muted-foreground">
-              © {new Date()?.getFullYear()} DayInFood Digital. All rights reserved.
+            <div className="text-sm text-muted-foreground mt-4 md:mt-0 md:order-1">
+            © {new Date()?.getFullYear()} Mon Croissant Digital. {t.common.allRightsReserved}.
             </div>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
-              <div className="text-sm text-muted-foreground">Available 24/7</div>
+              <div className="text-sm text-muted-foreground">{t.common.halalCertified}</div>
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             </div>
           </div>

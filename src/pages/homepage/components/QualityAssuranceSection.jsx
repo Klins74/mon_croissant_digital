@@ -2,93 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
+import translations from '../../../translations';
 
 const QualityAssuranceSection = ({ currentLanguage }) => {
-  const content = {
-    en: {
-      title: "Quality You Can Trust",
-      subtitle: "Certified excellence in every bite",
-      certifications: [
-        {
-          name: "Halal Certified",
-          description: "Certified by Islamic Organization of Kazakhstan",
-          icon: "Shield",
-          verified: true
-        },
-        {
-          name: "EAEU Standards",
-          description: "Meets Eurasian Economic Union food safety standards",
-          icon: "Award",
-          verified: true
-        },
-        {
-          name: "Artisanal Quality",
-          description: "Traditional French techniques with premium ingredients",
-          icon: "Star",
-          verified: true
-        }
-      ],
-      viewCertificates: "View Certificates",
-      qualityPromise: "Our Promise",
-      promiseText: "Every pastry is crafted with the finest ingredients, following traditional French methods while maintaining strict halal standards."
-    },
-    ru: {
-      title: "Качество, которому можно доверять",
-      subtitle: "Сертифицированное совершенство в каждом кусочке",
-      certifications: [
-        {
-          name: "Халяль сертификат",
-          description: "Сертифицировано Исламской организацией Казахстана",
-          icon: "Shield",
-          verified: true
-        },
-        {
-          name: "Стандарты ЕАЭС",
-          description: "Соответствует стандартам безопасности пищевых продуктов ЕАЭС",
-          icon: "Award",
-          verified: true
-        },
-        {
-          name: "Ремесленное качество",
-          description: "Традиционные французские техники с премиальными ингредиентами",
-          icon: "Star",
-          verified: true
-        }
-      ],
-      viewCertificates: "Посмотреть сертификаты",
-      qualityPromise: "Наше обещание",
-      promiseText: "Каждая выпечка изготавливается из лучших ингредиентов по традиционным французским методам с соблюдением строгих халяльных стандартов."
-    },
-    kz: {
-      title: "Сенуге болатын сапа",
-      subtitle: "Әр тістегенде сертификатталған керемет",
-      certifications: [
-        {
-          name: "Халал сертификаты",
-          description: "Қазақстанның Ислам ұйымы сертификаттаған",
-          icon: "Shield",
-          verified: true
-        },
-        {
-          name: "ЕАЭО стандарттары",
-          description: "Еуразиялық экономикалық одақтың азық-түлік қауіпсіздігі стандарттарына сәйкес",
-          icon: "Award",
-          verified: true
-        },
-        {
-          name: "Қолөнер сапасы",
-          description: "Премиум ингредиенттермен дәстүрлі француз техникасы",
-          icon: "Star",
-          verified: true
-        }
-      ],
-      viewCertificates: "Сертификаттарды көру",
-      qualityPromise: "Біздің уәдеміз",
-      promiseText: "Әр тәтті ең жақсы ингредиенттерден дәстүрлі француз әдістерімен қатаң халал стандарттарын сақтай отырып жасалады."
-    }
-  };
+  const lang = currentLanguage || 'ru';
+  const t = translations[lang];
+  const content = t.qualityAssurance;
+  const commonContent = t.common;
 
-  const currentContent = content?.[currentLanguage] || content?.en;
+  const currentContent = content;
 
   const certificationImages = [
     "https://images.pexels.com/photos/6205509/pexels-photo-6205509.jpeg",
@@ -144,7 +66,7 @@ const QualityAssuranceSection = ({ currentLanguage }) => {
                       {cert?.verified && (
                         <div className="flex items-center space-x-1">
                           <Icon name="CheckCircle" size={16} className="text-green-600" />
-                          <span className="text-xs text-green-600 font-medium">Verified</span>
+                          <span className="text-xs text-green-600 font-medium">{content?.verified}</span>
                         </div>
                       )}
                     </div>
@@ -165,7 +87,7 @@ const QualityAssuranceSection = ({ currentLanguage }) => {
             >
               <button className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors">
                 <Icon name="ExternalLink" size={16} />
-                <span className="text-sm font-medium">{currentContent?.viewCertificates}</span>
+                <span className="text-sm font-medium">{content?.viewCertificates}</span>
               </button>
             </motion.div>
           </motion.div>
@@ -209,10 +131,10 @@ const QualityAssuranceSection = ({ currentLanguage }) => {
                 <h3 className="text-lg font-heading font-semibold text-card-foreground">
                   {currentContent?.qualityPromise}
                 </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {currentContent?.promiseText}
+                </p>
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {currentContent?.promiseText}
-              </p>
             </motion.div>
 
             {/* Trust Metrics */}
@@ -224,15 +146,15 @@ const QualityAssuranceSection = ({ currentLanguage }) => {
             >
               <div className="text-center p-4 bg-background rounded-lg">
                 <div className="text-2xl font-heading font-bold text-primary mb-1">100%</div>
-                <div className="text-xs text-muted-foreground">Halal</div>
+                <div className="text-xs text-muted-foreground">{commonContent?.halalCertified}</div>
               </div>
               <div className="text-center p-4 bg-background rounded-lg">
                 <div className="text-2xl font-heading font-bold text-primary mb-1">24/7</div>
-                <div className="text-xs text-muted-foreground">Fresh</div>
+                <div className="text-xs text-muted-foreground">{t.hero?.fresh247}</div>
               </div>
               <div className="text-center p-4 bg-background rounded-lg">
                 <div className="text-2xl font-heading font-bold text-primary mb-1">5★</div>
-                <div className="text-xs text-muted-foreground">Quality</div>
+                <div className="text-xs text-muted-foreground">{content?.quality}</div>
               </div>
             </motion.div>
           </motion.div>

@@ -2,102 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
+import translations from "../../../../src/translations.js";
 
 const HeritageSection = ({ currentLanguage }) => {
-  const content = {
-    en: {
-      title: "French Heritage, Local Heart",
-      subtitle: "Where traditional artistry meets cultural respect",
-      storyTitle: "Our Story",
-      storyText: `Born from a passion for authentic French baking and deep respect for local traditions, Mon Croissant bridges two worlds. Our master bakers trained in Lyon and Paris bring centuries-old techniques to Kazakhstan, while honoring halal principles and local tastes.\n\nEvery recipe tells a story of cultural harmony - from our buttery croissants made with premium halal butter to our pain au chocolat crafted with Belgian chocolate that meets Islamic dietary laws.`,
-      valuesTitle: "Our Values",
-      values: [
-        {
-          title: "Authentic Craftsmanship",
-          description: "Traditional French techniques passed down through generations",
-          icon: "Hammer"
-        },
-        {
-          title: "Cultural Respect",
-          description: "Honoring local traditions while maintaining French authenticity",
-          icon: "Heart"
-        },
-        {
-          title: "Quality Promise",
-          description: "Premium ingredients sourced with care and certified halal",
-          icon: "Shield"
-        },
-        {
-          title: "Community Connection",
-          description: "Building bridges between cultures through shared love of food",
-          icon: "Users"
-        }
-      ],
-      learnMore: "Learn More About Us"
-    },
-    ru: {
-      title: "Французское наследие, местное сердце",
-      subtitle: "Где традиционное мастерство встречается с культурным уважением",
-      storyTitle: "Наша история",
-      storyText: `Рожденный из страсти к аутентичной французской выпечке и глубокого уважения к местным традициям, Mon Croissant соединяет два мира. Наши мастера-пекари, обученные в Лионе и Париже, привносят вековые техники в Казахстан, соблюдая халяльные принципы и местные вкусы.\n\nКаждый рецепт рассказывает историю культурной гармонии - от наших масляных круассанов из премиального халяльного масла до пан-о-шокола из бельгийского шоколада, соответствующего исламским диетическим законам.`,
-      valuesTitle: "Наши ценности",
-      values: [
-        {
-          title: "Подлинное мастерство",
-          description: "Традиционные французские техники, передаваемые через поколения",
-          icon: "Hammer"
-        },
-        {
-          title: "Культурное уважение",
-          description: "Почитание местных традиций при сохранении французской аутентичности",
-          icon: "Heart"
-        },
-        {
-          title: "Обещание качества",
-          description: "Премиальные ингредиенты, тщательно отобранные и сертифицированные халяль",
-          icon: "Shield"
-        },
-        {
-          title: "Связь с сообществом",
-          description: "Строительство мостов между культурами через общую любовь к еде",
-          icon: "Users"
-        }
-      ],
-      learnMore: "Узнать больше о нас"
-    },
-    kz: {
-      title: "Француз мұрасы, жергілікті жүрек",
-      subtitle: "Дәстүрлі шеберлік пен мәдени құрметтің кездесетін жері",
-      storyTitle: "Біздің тарихымыз",
-      storyText: `Түпнұсқа француз наубайшылығына деген құмарлық пен жергілікті дәстүрлерге терең құрметтен туған Mon Croissant екі әлемді жалғастырады. Лион мен Парижде дайындалған біздің шебер наубайшылар ғасырлық техникаларды Қазақстанға әкеледі, халал принциптері мен жергілікті дәмдерді құрметтей отырып.\n\nӘр рецепт мәдени үйлесімнің тарихын айтады - премиум халал майынан жасалған майлы круассандардан бастап ислам диеталық заңдарына сәйкес келетін бельгиялық шоколадтан жасалған пан-о-шоколаға дейін.`,
-      valuesTitle: "Біздің құндылықтарымыз",
-      values: [
-        {
-          title: "Түпнұсқа шеберлік",
-          description: "Ұрпақтан ұрпаққа берілетін дәстүрлі француз техникалары",
-          icon: "Hammer"
-        },
-        {
-          title: "Мәдени құрмет",
-          description: "Француз түпнұсқалығын сақтай отырып, жергілікті дәстүрлерді құрметтеу",
-          icon: "Heart"
-        },
-        {
-          title: "Сапа уәдесі",
-          description: "Мұқият таңдалған және халал сертификатталған премиум ингредиенттер",
-          icon: "Shield"
-        },
-        {
-          title: "Қоғамдастықпен байланыс",
-          description: "Тағамға деген ортақ махabbat арқылы мәдениеттер арасында көпір салу",
-          icon: "Users"
-        }
-      ],
-      learnMore: "Біз туралы көбірек білу"
-    }
-  };
+  // Remove: import translations from '../../../translations';
 
-  const currentContent = content?.[currentLanguage] || content?.en;
+
+
+
+  const currentContent = translations?.[currentLanguage]?.heritage || translations?.ru?.heritage;
 
   const heritageImages = [
     "https://images.pexels.com/photos/4686821/pexels-photo-4686821.jpeg",

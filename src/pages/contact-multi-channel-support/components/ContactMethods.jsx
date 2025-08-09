@@ -1,15 +1,17 @@
 import React from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
+import translations from '../../../translations';
 
 const ContactMethods = () => {
+  const t = translations.ru;
   const contactMethods = [
     {
       id: 'whatsapp',
       title: 'WhatsApp Business',
       description: 'Instant messaging for quick questions and order updates',
       icon: 'MessageSquare',
-      primary: '+7 777 123 4567',
+      primary: t.common.whatsapp,
       secondary: 'Available 24/7',
       action: 'Chat Now',
       bgColor: 'bg-green-50',
@@ -21,7 +23,7 @@ const ContactMethods = () => {
       title: 'Phone Support',
       description: 'Speak directly with our customer service team',
       icon: 'Phone',
-      primary: '+7 727 456 7890',
+      primary: t.common.phone,
       secondary: 'Mon-Sun: 8:00 - 22:00',
       action: 'Call Now',
       bgColor: 'bg-blue-50',
@@ -33,7 +35,7 @@ const ContactMethods = () => {
       title: 'Email Support',
       description: 'Detailed inquiries and comprehensive assistance',
       icon: 'Mail',
-      primary: 'support@moncroissant.kz',
+      primary: t.common.email,
       secondary: 'Response within 2 hours',
       action: 'Send Email',
       bgColor: 'bg-purple-50',
@@ -45,7 +47,7 @@ const ContactMethods = () => {
       title: 'Emergency Line',
       description: 'Urgent order issues or quality concerns',
       icon: 'AlertCircle',
-      primary: '+7 777 999 8888',
+      primary: t.common.phone,
       secondary: 'Available 24/7',
       action: 'Emergency Call',
       bgColor: 'bg-red-50',
@@ -57,16 +59,16 @@ const ContactMethods = () => {
   const handleContactAction = (method) => {
     switch (method?.id) {
       case 'whatsapp':
-        window.open('https://wa.me/77771234567', '_blank');
+        window.open(`https://wa.me/${t.common.whatsapp.replace(/[^0-9]/g, '')}`, '_blank');
         break;
       case 'phone':
-        window.location.href = 'tel:+77274567890';
+        window.location.href = `tel:${t.common.phone}`;
         break;
       case 'email':
-        window.location.href = 'mailto:support@moncroissant.kz';
+        window.location.href = `mailto:${t.common.email}`;
         break;
       case 'emergency':
-        window.location.href = 'tel:+77779998888';
+        window.location.href = `tel:${t.common.phone}`;
         break;
       default:
         break;

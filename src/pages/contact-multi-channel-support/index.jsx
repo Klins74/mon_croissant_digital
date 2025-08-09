@@ -7,8 +7,10 @@ import ContactForm from './components/ContactForm';
 import LocationInfo from './components/LocationInfo';
 import SupportTeam from './components/SupportTeam';
 import FAQ from './components/FAQ';
+import translations from '../../translations';
 
 const ContactMultiChannelSupport = () => {
+  const t = translations.ru;
   useEffect(() => {
     // Scroll to top on component mount
     window.scrollTo(0, 0);
@@ -17,14 +19,14 @@ const ContactMultiChannelSupport = () => {
   return (
     <>
       <Helmet>
-        <title>Contact & Support - Mon Croissant Digital | Multi-Channel Customer Service</title>
+        <title>Контакты и поддержка - Mon Croissant Digital | Многоканальная служба поддержки</title>
         <meta 
           name="description" 
-          content="Get comprehensive support through multiple channels. WhatsApp, phone, email, and in-person assistance. Multilingual team ready to help with orders, quality concerns, and catering requests." 
+          content="Получите всеобъемлющую поддержку по нескольким каналам. WhatsApp, телефон, email и личная помощь. Многоязычная команда готова помочь с заказами, вопросами качества и кейтерингом." 
         />
-        <meta name="keywords" content="contact, support, customer service, WhatsApp, phone, email, multilingual, halal bakery, Almaty" />
-        <meta property="og:title" content="Contact & Support - Mon Croissant Digital" />
-        <meta property="og:description" content="Experience personalized support through multiple channels. Our multilingual team is ready to assist you." />
+        <meta name="keywords" content="контакты, поддержка, служба клиентов, WhatsApp, телефон, email, многоязычная, халяль пекарня, Алматы" />
+        <meta property="og:title" content="Контакты и поддержка - Mon Croissant Digital" />
+        <meta property="og:description" content="Опыт персонализированной поддержки по нескольким каналам. Наша многоязычная команда готова помочь вам." />
         <meta property="og:type" content="website" />
         <link rel="canonical" href="/contact-multi-channel-support" />
       </Helmet>
@@ -54,11 +56,11 @@ const ContactMultiChannelSupport = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-heading font-bold">Mon Croissant Digital</h3>
-                    <p className="text-secondary-foreground/80 text-sm">Authentic French Bakery</p>
+                    <p className="text-secondary-foreground/80 text-sm">Подлинная французская пекарня</p>
                   </div>
                 </div>
                 <p className="text-secondary-foreground/80 mb-4 max-w-md">
-                  Experience the finest French pastries with 24/7 availability, halal certification, and exceptional customer service in the heart of Almaty.
+Ощутите лучшие французские пирожные с доступностью 24/7, халяль-сертификацией и исключительным обслуживанием клиентов в самом сердце Алматы.
                 </p>
                 <div className="flex space-x-4">
                   <div className="w-8 h-8 bg-secondary-foreground/10 rounded-full flex items-center justify-center hover:bg-secondary-foreground/20 transition-colors cursor-pointer">
@@ -74,40 +76,40 @@ const ContactMultiChannelSupport = () => {
               </div>
 
               <div>
-                <h4 className="font-heading font-semibold mb-4">Quick Contact</h4>
+                <h4 className="font-heading font-semibold mb-4">Быстрая связь</h4>
                 <div className="space-y-3 text-sm text-secondary-foreground/80">
                   <div>
-                    <p className="font-medium text-secondary-foreground">WhatsApp</p>
-                    <p>+7 777 123 4567</p>
+                    <p className="font-medium text-secondary-foreground">{t.common.whatsapp}</p>
+                    <p>{t.common.whatsapp}</p>
                   </div>
                   <div>
-                    <p className="font-medium text-secondary-foreground">Phone</p>
-                    <p>+7 727 456 7890</p>
+                    <p className="font-medium text-secondary-foreground">{t.common.phone}</p>
+                    <p>{t.common.phone}</p>
                   </div>
                   <div>
-                    <p className="font-medium text-secondary-foreground">Email</p>
-                    <p>support@moncroissant.kz</p>
+                    <p className="font-medium text-secondary-foreground">{t.common.email}</p>
+                    <p>{t.common.email}</p>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-heading font-semibold mb-4">Business Hours</h4>
+                <h4 className="font-heading font-semibold mb-4">Рабочие часы</h4>
                 <div className="space-y-2 text-sm text-secondary-foreground/80">
                   <div className="flex justify-between">
-                    <span>Mon-Fri:</span>
+                    <span>Пн-Пт:</span>
                     <span>6:00-23:00</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Saturday:</span>
+                    <span>Суббота:</span>
                     <span>7:00-23:00</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Sunday:</span>
+                    <span>Воскресенье:</span>
                     <span>8:00-22:00</span>
                   </div>
                   <div className="flex justify-between font-medium text-secondary-foreground">
-                    <span>Online:</span>
+                    <span>Онлайн:</span>
                     <span>24/7</span>
                   </div>
                 </div>
@@ -116,7 +118,7 @@ const ContactMultiChannelSupport = () => {
 
             <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-center">
               <p className="text-secondary-foreground/60 text-sm">
-                © {new Date()?.getFullYear()} Mon Croissant Digital. All rights reserved. | Halal Certified | Premium French Bakery
+© {new Date()?.getFullYear()} Mon Croissant Digital. Все права защищены. | Халяль сертификат | Премиум французская пекарня
               </p>
             </div>
           </div>

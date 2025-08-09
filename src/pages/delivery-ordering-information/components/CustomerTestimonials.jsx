@@ -105,213 +105,39 @@ const CustomerTestimonials = () => {
 
   return (
     <div className="space-y-8">
-      {/* Delivery Statistics */}
+      {/* Delivery Statistics Only */}
       <div className="bg-card rounded-lg border border-border p-6">
         <h3 className="text-xl font-heading font-semibold text-foreground mb-6 text-center">
           Delivery Performance
         </h3>
-
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {deliveryStats?.map((stat, index) => (
-            <div key={index} className="text-center p-4 bg-muted rounded-lg">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-3">
-                <Icon name={stat?.icon} size={24} className="text-primary" />
-              </div>
-              <div className="text-2xl font-bold text-foreground mb-1">
-                {stat?.value}
-              </div>
-              <p className="text-sm text-muted-foreground">{stat?.label}</p>
+          <div className="text-center p-4 bg-muted rounded-lg">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-3">
+              <Icon name="Clock" size={24} className="text-primary" />
             </div>
-          ))}
-        </div>
-      </div>
-      {/* Featured Testimonial */}
-      <div className="bg-card rounded-lg border border-border p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-heading font-semibold text-foreground">
-            Customer Experiences
-          </h3>
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={prevTestimonial}
-              className="p-2 rounded-lg border border-border hover:border-primary transition-colors"
-            >
-              <Icon name="ChevronLeft" size={16} />
-            </button>
-            <span className="text-sm text-muted-foreground px-3">
-              {activeTestimonial + 1} of {testimonials?.length}
-            </span>
-            <button
-              onClick={nextTestimonial}
-              className="p-2 rounded-lg border border-border hover:border-primary transition-colors"
-            >
-              <Icon name="ChevronRight" size={16} />
-            </button>
+            <div className="text-2xl font-bold text-foreground mb-1">28 minutes</div>
+            <p className="text-sm text-muted-foreground">Average Delivery Time</p>
           </div>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Customer Info */}
-          <div className="lg:col-span-1">
-            <div className="text-center mb-6">
-              <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
-                <Image
-                  src={currentTestimonial?.image}
-                  alt={currentTestimonial?.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h4 className="font-medium text-foreground mb-1">
-                {currentTestimonial?.name}
-              </h4>
-              <p className="text-sm text-muted-foreground mb-2">
-                {currentTestimonial?.location}
-              </p>
-              <div className="flex items-center justify-center space-x-1 mb-2">
-                {[...Array(currentTestimonial?.rating)]?.map((_, i) => (
-                  <Icon key={i} name="Star" size={16} className="text-warning fill-current" />
-                ))}
-              </div>
-              <p className="text-xs text-muted-foreground">
-                {new Date(currentTestimonial.date)?.toLocaleDateString()}
-              </p>
+          <div className="text-center p-4 bg-muted rounded-lg">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-3">
+              <Icon name="Target" size={24} className="text-primary" />
             </div>
-
-            <div className="space-y-3">
-              <div className="p-3 bg-muted rounded-lg">
-                <div className="flex items-center space-x-2 mb-1">
-                  <Icon name="Package" size={14} className="text-primary" />
-                  <span className="text-xs font-medium text-foreground">Order Type</span>
-                </div>
-                <p className="text-sm text-muted-foreground">{currentTestimonial?.orderType}</p>
-              </div>
-              
-              <div className="p-3 bg-muted rounded-lg">
-                <div className="flex items-center space-x-2 mb-1">
-                  <Icon name="Clock" size={14} className="text-primary" />
-                  <span className="text-xs font-medium text-foreground">Delivery Time</span>
-                </div>
-                <p className="text-sm text-muted-foreground">{currentTestimonial?.deliveryTime}</p>
-              </div>
-            </div>
+            <div className="text-2xl font-bold text-foreground mb-1">98.5%</div>
+            <p className="text-sm text-muted-foreground">On-Time Delivery Rate</p>
           </div>
-
-          {/* Review Content */}
-          <div className="lg:col-span-2">
-            <div className="mb-6">
-              <blockquote className="text-foreground leading-relaxed mb-4">
-                "{currentTestimonial?.review}"
-              </blockquote>
-              
-              <div className="p-4 bg-accent/10 rounded-lg">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Icon name="ShoppingBag" size={16} className="text-accent" />
-                  <span className="text-sm font-medium text-foreground">Order Details</span>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  {currentTestimonial?.orderDetails}
-                </p>
-              </div>
+          <div className="text-center p-4 bg-muted rounded-lg">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-3">
+              <Icon name="Star" size={24} className="text-primary" />
             </div>
-
-            {/* Photo Gallery */}
-            {currentTestimonial?.photos && currentTestimonial?.photos?.length > 0 && (
-              <div>
-                <h5 className="text-sm font-medium text-foreground mb-3">
-                  Customer Photos
-                </h5>
-                <div className="grid grid-cols-2 gap-3">
-                  {currentTestimonial?.photos?.map((photo, index) => (
-                    <div key={index} className="aspect-video rounded-lg overflow-hidden">
-                      <Image
-                        src={photo}
-                        alt={`Customer photo ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            <div className="text-2xl font-bold text-foreground mb-1">4.9/5</div>
+            <p className="text-sm text-muted-foreground">Customer Satisfaction</p>
           </div>
-        </div>
-      </div>
-      {/* Testimonial Grid */}
-      <div className="bg-card rounded-lg border border-border p-6">
-        <h3 className="text-xl font-heading font-semibold text-foreground mb-6">
-          More Customer Reviews
-        </h3>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {testimonials?.slice(0, 6)?.map((testimonial, index) => (
-            <button
-              key={testimonial?.id}
-              onClick={() => setActiveTestimonial(index)}
-              className={`p-4 rounded-lg border text-left transition-all duration-200 ${
-                activeTestimonial === index
-                  ? 'border-primary bg-primary/5 shadow-warm'
-                  : 'border-border hover:border-primary/50'
-              }`}
-            >
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden">
-                  <Image
-                    src={testimonial?.image}
-                    alt={testimonial?.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="font-medium text-foreground truncate">
-                    {testimonial?.name}
-                  </p>
-                  <div className="flex items-center space-x-1">
-                    {[...Array(testimonial?.rating)]?.map((_, i) => (
-                      <Icon key={i} name="Star" size={12} className="text-warning fill-current" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-              
-              <p className="text-sm text-muted-foreground line-clamp-3 mb-2">
-                {testimonial?.review}
-              </p>
-              
-              <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span>{testimonial?.orderType}</span>
-                <span>{new Date(testimonial.date)?.toLocaleDateString()}</span>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-      {/* Trust Indicators */}
-      <div className="bg-card rounded-lg border border-border p-6">
-        <div className="text-center">
-          <h3 className="text-xl font-heading font-semibold text-foreground mb-4">
-            Trusted by Thousands
-          </h3>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join our growing community of satisfied customers who trust Mon Croissant for reliable, high-quality bakery deliveries across the city.
-          </p>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">50K+</div>
-              <p className="text-sm text-muted-foreground">Happy Customers</p>
+          <div className="text-center p-4 bg-muted rounded-lg">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-3">
+              <Icon name="Package" size={24} className="text-primary" />
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">200K+</div>
-              <p className="text-sm text-muted-foreground">Orders Delivered</p>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">4.9</div>
-              <p className="text-sm text-muted-foreground">Average Rating</p>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-              <p className="text-sm text-muted-foreground">Service Available</p>
-            </div>
+            <div className="text-2xl font-bold text-foreground mb-1">50,000+</div>
+            <p className="text-sm text-muted-foreground">Orders Delivered</p>
           </div>
         </div>
       </div>
