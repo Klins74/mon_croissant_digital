@@ -63,7 +63,7 @@ const Header = ({ isCollapsed = false }) => {
             </div>
             <div className="flex flex-col">
               <h1 className="text-lg font-heading font-semibold text-foreground leading-tight">
-                MonCroissant
+                FrenchCroissant
               </h1>
               <span className="text-xs font-accent text-muted-foreground -mt-1">
                 Digital

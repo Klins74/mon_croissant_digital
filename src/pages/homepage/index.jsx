@@ -62,7 +62,7 @@ const Homepage = () => {
                 </div>
                 <div className="flex flex-col">
                   <h3 className="text-xl font-bold font-heading text-card-foreground">
-                    MonCroissant
+                    FrenchCroissant
                   </h3>
                   <span className="text-xs font-accent text-muted-foreground -mt-1">
                     Digital
@@ -142,7 +142,7 @@ const Homepage = () => {
           {/* Bottom Bar */}
           <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between">
             <div className="text-sm text-muted-foreground mt-4 md:mt-0 md:order-1">
-            © {new Date()?.getFullYear()} MonCroissant Digital. {t.common.allRightsReserved}.
+            © {new Date()?.getFullYear()} FrenchCroissant Digital. {t.common.allRightsReserved}.
             </div>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
               <div className="text-sm text-muted-foreground">{t.common.halalCertified}</div>

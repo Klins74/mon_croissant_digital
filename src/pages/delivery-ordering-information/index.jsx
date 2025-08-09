@@ -37,9 +37,9 @@ const DeliveryOrderingInformation = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Информация о доставке и заказах - MonCroissant Digital</title>
-        <meta name="description" content="Complete guide to MonCroissant's 24/7 delivery service. View delivery zones, pricing, scheduling options, and customer reviews. Order fresh French pastries anytime." />
-        <meta name="keywords" content="bakery delivery, 24/7 service, delivery zones, ordering guide, fresh pastries, MonCroissant" />
+        <title>Информация о доставке и заказах - FrenchCroissant Digital</title>
+        <meta name="description" content="Complete guide to FrenchCroissant's 24/7 delivery service. View delivery zones, pricing, scheduling options, and customer reviews. Order fresh French pastries anytime." />
+        <meta name="keywords" content="bakery delivery, 24/7 service, delivery zones, ordering guide, fresh pastries, FrenchCroissant" />
       </Helmet>
       <Header />
       <main className="pt-16">
@@ -184,7 +184,7 @@ const DeliveryOrderingInformation = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-heading font-semibold text-foreground">MonCroissant</h3>
+                    <h3 className="font-heading font-semibold text-foreground">FrenchCroissant</h3>
                     <p className="text-sm text-muted-foreground">Digital</p>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ const DeliveryOrderingInformation = () => {
 
             <div className="border-t border-border mt-8 pt-8 text-center">
               <p className="text-sm text-muted-foreground">
-© {new Date()?.getFullYear()} MonCroissant Digital. Все права защищены.
+© {new Date()?.getFullYear()} FrenchCroissant Digital. Все права защищены.
               </p>
             </div>
           </div>
