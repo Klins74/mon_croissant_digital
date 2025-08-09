@@ -68,7 +68,7 @@ const DeliveryZoneMap = () => {
               width="100%"
               height="100%"
               loading="lazy"
-              title="Mon Croissant Delivery Zones"
+              title="DayInFood Delivery Zones"
               referrerPolicy="no-referrer-when-downgrade"
               src="https://www.google.com/maps?q=43.2220,76.8512&z=12&output=embed"
               className="border-0"

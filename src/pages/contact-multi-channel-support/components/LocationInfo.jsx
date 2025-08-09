@@ -42,7 +42,7 @@ const LocationInfo = () => {
                   width="100%"
                   height="100%"
                   loading="lazy"
-                  title="Mon Croissant Bakery Location"
+                  title="DayInFood Bakery Location"
                   referrerPolicy="no-referrer-when-downgrade"
                   src={`https://www.google.com/maps?q=${locationDetails?.coordinates}&z=15&output=embed`}
                   className="rounded-t-xl"

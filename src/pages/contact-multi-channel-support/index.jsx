@@ -19,13 +19,13 @@ const ContactMultiChannelSupport = () => {
   return (
     <>
       <Helmet>
-        <title>Контакты и поддержка - Mon Croissant Digital | Многоканальная служба поддержки</title>
+        <title>Контакты и поддержка - DayInFood Digital | Многоканальная служба поддержки</title>
         <meta 
           name="description" 
           content="Получите всеобъемлющую поддержку по нескольким каналам. WhatsApp, телефон, email и личная помощь. Многоязычная команда готова помочь с заказами, вопросами качества и кейтерингом." 
         />
         <meta name="keywords" content="контакты, поддержка, служба клиентов, WhatsApp, телефон, email, многоязычная, халяль пекарня, Алматы" />
-        <meta property="og:title" content="Контакты и поддержка - Mon Croissant Digital" />
+        <meta property="og:title" content="Контакты и поддержка - DayInFood Digital" />
         <meta property="og:description" content="Опыт персонализированной поддержки по нескольким каналам. Наша многоязычная команда готова помочь вам." />
         <meta property="og:type" content="website" />
         <link rel="canonical" href="/contact-multi-channel-support" />
@@ -55,7 +55,7 @@ const ContactMultiChannelSupport = () => {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-heading font-bold">Mon Croissant Digital</h3>
+                    <h3 className="text-xl font-heading font-bold">DayInFood Digital</h3>
                     <p className="text-secondary-foreground/80 text-sm">Подлинная французская пекарня</p>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ const ContactMultiChannelSupport = () => {
 
             <div className="border-t border-secondary-foreground/20 mt-8 pt-8 text-center">
               <p className="text-secondary-foreground/60 text-sm">
-© {new Date()?.getFullYear()} Mon Croissant Digital. Все права защищены. | Халяль сертификат | Премиум французская пекарня
+© {new Date()?.getFullYear()} DayInFood Digital. Все права защищены. | Халяль сертификат | Премиум французская пекарня
               </p>
             </div>
           </div>

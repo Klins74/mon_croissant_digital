@@ -26,8 +26,8 @@ const ContactHero = () => {
             We're Here to Help
           </h1>
           
-          <p className="text-lg lg:text-xl text-muted-foreground mb-8 leading-relaxed">
-            Experience personalized support through multiple channels. Our multilingual team is ready to assist you with orders, questions, and everything Mon Croissant.
+          <p className="mt-4 text-lg md:text-xl text-secondary-foreground/80 max-w-2xl mx-auto">
+            Our multilingual team is ready to assist you around the clock with orders, questions, and everything DayInFood.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">

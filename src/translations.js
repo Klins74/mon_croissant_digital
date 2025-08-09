@@ -41,7 +41,7 @@ const translations = {
       title: "Французское наследие, местное сердце",
       subtitle: "Где традиционное мастерство встречается с культурным уважением",
       storyTitle: "Наша история",
-      storyText: "Рожденный из страсти к аутентичной французской выпечке и глубокого уважения к местным традициям, Mon Croissant соединяет два мира. Наши мастера-пекари, обученные в Лионе и Париже, приносят вековые техники в Казахстан, соблюдая халяльные принципы и местные вкусы.\n\nКаждый рецепт рассказывает историю культурной гармонии - от наших масляных круассанов из премиального халяльного масла до пан-о-шокола из бельгийского шоколада, соответствующего исламским диетическим законам.",
+      storyText: "Рожденный из страсти к аутентичной французской выпечке и глубокого уважения к местным традициям, DayInFood соединяет два мира. Наши мастера-пекари, обученные в Лионе и Париже, приносят вековые техники в Казахстан, соблюдая халяльные принципы и местные вкусы.\n\nКаждый рецепт рассказывает историю культурной гармонии - от наших масляных круассанов из премиального халяльного масла до пан-о-шокола из бельгийского шоколада, соответствующего исламским диетическим законам.",
       valuesTitle: "Наши ценности",
       values: [
         { title: "Подлинное мастерство", description: "Традиционные французские техники, передаваемые через поколения", icon: "Hammer" },
@@ -150,7 +150,7 @@ const translations = {
       title: "French Heritage, Local Heart",
       subtitle: "Where traditional artistry meets cultural respect",
       storyTitle: "Our Story",
-      storyText: "Born from a passion for authentic French baking and deep respect for local traditions, Mon Croissant bridges two worlds. Our master bakers trained in Lyon and Paris bring centuries-old techniques to Kazakhstan, while honoring halal principles and local tastes.\n\nEvery recipe tells a story of cultural harmony - from our buttery croissants made with premium halal butter to our pain au chocolat crafted with Belgian chocolate that meets Islamic dietary laws.",
+      storyText: "Born from a passion for authentic French baking and deep respect for local traditions, DayInFood bridges two worlds. Our master bakers trained in Lyon and Paris bring centuries-old techniques to Kazakhstan, while honoring halal principles and local tastes.\n\nEvery recipe tells a story of cultural harmony - from our buttery croissants made with premium halal butter to our pain au chocolat crafted with Belgian chocolate that meets Islamic dietary laws.",
       valuesTitle: "Our Values",
       values: [
         { title: "Authentic Craftsmanship", description: "Traditional French techniques passed down through generations", icon: "Hammer" },
