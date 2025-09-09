@@ -31,8 +31,6 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/forms": "^0.5.7",
-    "@testing-library/jest-dom": "^5.15.1",
-    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^1.8.4",
     "class-variance-authority": "^0.7.1",
@@ -40,7 +38,7 @@
     "d3": "^7.9.0",
     "date-fns": "^4.1.0",
     "dotenv": "^16.0.1",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "^10.18.0",
     "lucide-react": "^0.484.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -53,12 +51,18 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-elevation": "^2.0.0",
-    "tailwindcss-fluid-type": "^2.0.7"
+    "tailwindcss-fluid-type": "^2.0.7",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "stripe": "^16.0.0"
   },
   "scripts": {
     "start": "vite",
+    "server": "node server/server.js",
+    "dev": "concurrently \"npm run server\" \"npm start\"",
     "build": "vite build --sourcemap",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "vitest --ui"
   },
   "eslintConfig": {
     "extends": [
@@ -83,11 +87,18 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/line-clamp": "^0.1.0",
     "@tailwindcss/typography": "^0.5.16",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
     "@vitejs/plugin-react": "4.3.4",
+    "@vitest/ui": "^3.2.4",
     "autoprefixer": "10.4.2",
+    "concurrently": "^9.1.2",
+    "jsdom": "^26.1.0",
     "postcss": "8.4.8",
+    "postcss-import": "^16.1.1",
     "tailwindcss": "3.4.6",
     "vite": "^5.0.0",
-    "vite-tsconfig-paths": "3.6.0"
+    "vite-tsconfig-paths": "3.6.0",
+    "vitest": "^3.2.4"
   }
 }

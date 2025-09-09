@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/ui/Header';
 import HeroSection from './components/HeroSection';
@@ -7,12 +7,26 @@ import QualityAssuranceSection from './components/QualityAssuranceSection';
 import TestimonialCarousel from "./components/TestimonialCarousel";
 import HeritageSection from "./components/HeritageSection";
 import DeliveryZoneSection from './components/DeliveryZoneSection';
+import GroupedMenu from '../../components/GroupedMenu';
+import ProductDetailModal from '../../components/ProductDetailModal';
+import CartSidebar from '../../components/CartSidebar';
+import AddToCartNotification from '../../components/AddToCartNotification';
+import { useCart } from '../../contexts/CartContext';
 import translations from '../../translations';
 
 const Homepage = () => {
   const navigate = useNavigate();
   const lang = 'ru'; // Or get from context/state
   const t = translations[lang];
+
+  // Cart context
+  const { addToCart } = useCart();
+
+  // State for product details
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const [lastAddedProduct, setLastAddedProduct] = useState(null);
+  const [showNotification, setShowNotification] = useState(false);
 
   // Navigation handlers
   const handleOrderNow = () => {
@@ -21,6 +35,28 @@ const Homepage = () => {
 
   const handleExploreMenu = () => {
     navigate('/interactive-menu-ordering');
+  };
+
+  // Menu handlers
+  const handleViewDetails = (product) => {
+    setSelectedProduct(product);
+    setIsDetailModalOpen(true);
+  };
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setLastAddedProduct(product);
+    setShowNotification(true);
+  };
+
+  const handleCloseNotification = () => {
+    setShowNotification(false);
+    setLastAddedProduct(null);
+  };
+
+  const handleCloseDetailModal = () => {
+    setIsDetailModalOpen(false);
+    setSelectedProduct(null);
   };
 
   return (
@@ -40,6 +76,25 @@ const Homepage = () => {
         <QualityAssuranceSection />
         {/* Heritage Section */}
         <HeritageSection />
+        
+        {/* Menu Section */}
+        <section className="py-16 bg-muted/30">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-4">
+              Наше меню
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Откройте для себя наш ассортимент подлинной французской выпечки, 
+              приготовленной с любовью и мастерством
+            </p>
+          </div>
+          
+          <GroupedMenu
+            onViewDetails={handleViewDetails}
+            onAddToCart={handleAddToCart}
+          />
+        </section>
+        
         {/* Delivery Zone Section */}
         <DeliveryZoneSection />
       </main>
@@ -151,6 +206,24 @@ const Homepage = () => {
           </div>
         </div>
       </footer>
+
+      {/* Product Detail Modal */}
+      <ProductDetailModal
+        product={selectedProduct}
+        isOpen={isDetailModalOpen}
+        onClose={handleCloseDetailModal}
+        onAddToCart={handleAddToCart}
+      />
+
+      {/* Cart Sidebar */}
+      <CartSidebar />
+
+      {/* Add to Cart Notification */}
+      <AddToCartNotification
+        isVisible={showNotification}
+        product={lastAddedProduct}
+        onClose={handleCloseNotification}
+      />
     </div>
   );
 };

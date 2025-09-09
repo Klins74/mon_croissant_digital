@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Icon from '../AppIcon';
 import Button from './Button';
+import { useCart } from '../../contexts/CartContext';
 import translations from '../../translations';
 
 const Header = ({ isCollapsed = false }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [cartPulseKey, setCartPulseKey] = useState(0);
   const location = useLocation();
+  const { cartItemCount, openCart } = useCart();
   const lang = 'ru';
   const t = translations[lang];
 
@@ -17,6 +21,15 @@ const Header = ({ isCollapsed = false }) => {
     { name: t.common.deliveryInfo, path: '/delivery-ordering-information', icon: 'Truck' },
     { name: t.common.contactSupport, path: '/contact-multi-channel-support', icon: 'MessageCircle' },
   ];
+
+  // Track cart changes for animation
+  const prevCartCount = React.useRef(cartItemCount);
+  useEffect(() => {
+    if (cartItemCount > prevCartCount.current) {
+      setCartPulseKey(prev => prev + 1);
+    }
+    prevCartCount.current = cartItemCount;
+  }, [cartItemCount]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,6 +106,32 @@ const Header = ({ isCollapsed = false }) => {
             </Button>
 
             {/* Order Now Button */}
+            {/* Cart Button */}
+            <button
+              onClick={openCart}
+              className="relative p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              aria-label="Open cart"
+            >
+              <Icon name="ShoppingCart" size={20} />
+              {cartItemCount > 0 && (
+                <motion.span
+                  key={cartPulseKey}
+                  className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs font-medium"
+                  initial={{ scale: 1 }}
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    transition: {
+                      duration: 0.6,
+                      ease: "easeInOut",
+                      times: [0, 0.5, 1]
+                    }
+                  }}
+                >
+                  {cartItemCount > 99 ? '99+' : cartItemCount}
+                </motion.span>
+              )}
+            </button>
+
             <Button
               as={Link}
               to="/interactive-menu-ordering"
@@ -147,8 +186,12 @@ const Header = ({ isCollapsed = false }) => {
                   iconName="ShoppingCart"
                   iconPosition="left"
                   fullWidth
+                  onClick={() => {
+                    openCart();
+                    closeMobileMenu();
+                  }}
                 >
-                  Посмотреть корзину
+                  Корзина ({cartItemCount})
                 </Button>
                 <Button
                   as={Link}

@@ -1,13 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Button from '../../../components/ui/Button';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
+import { FloatingFoodDecorations } from '../../../components/FoodIllustrations';
 import translations from '../../../translations';
 
 const HeroSection = ({ onOrderNow, onExploreMenu }) => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const heroRef = useRef(null);
+  
+  // Parallax scroll effects
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  
+  // Smooth spring animations
+  const backgroundYSpring = useSpring(backgroundY, { stiffness: 100, damping: 30 });
+  const contentYSpring = useSpring(contentY, { stiffness: 100, damping: 30 });
 
   const languages = [
   { code: 'ru', name: 'Русский', flag: '🇷🇺' },
@@ -35,9 +51,15 @@ const HeroSection = ({ onOrderNow, onExploreMenu }) => {
   const content = heroContent;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-card to-muted">
-      {/* Background Video/Image */}
-      <div className="absolute inset-0 z-0">
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-card to-muted">
+      {/* Floating Food Decorations */}
+      <FloatingFoodDecorations />
+
+      {/* Background Video/Image with Parallax */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        style={{ y: backgroundYSpring }}
+      >
         <div className="relative w-full h-full">
           {videoSources?.map((src, index) =>
           <motion.div
@@ -50,16 +72,19 @@ const HeroSection = ({ onOrderNow, onExploreMenu }) => {
               <Image
               src={src}
               alt={`Artisan baker crafting croissants ${index + 1}`}
-              className="w-full h-full object-cover golden-hour" />
+              className="w-full h-full object-cover golden-hour scale-110" />
 
             </motion.div>
           )}
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-background/50"></div>
         <div className="absolute inset-0 texture-flour"></div>
-      </div>
-      {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
+      </motion.div>
+      {/* Main Content with Parallax */}
+      <motion.div 
+        className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8"
+        style={{ y: contentYSpring, opacity }}
+      >
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -208,7 +233,7 @@ const HeroSection = ({ onOrderNow, onExploreMenu }) => {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}

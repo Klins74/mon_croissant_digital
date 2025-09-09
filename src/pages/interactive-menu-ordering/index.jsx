@@ -3,7 +3,7 @@ import Header from '../../components/ui/Header';
 // Mobile-first redesign: remove desktop filters/chips UI
 import ProductCard from './components/ProductCard';
 import CartSidebar from './components/CartSidebar';
-import QRCodeModal from './components/QRCodeModal';
+import QuickInfoBlocks from './components/QuickInfoBlocks';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
@@ -24,7 +24,6 @@ const InteractiveMenuOrdering = () => {
   const [sortBy, setSortBy] = useState('name');
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState('en');
 
@@ -493,16 +492,6 @@ const InteractiveMenuOrdering = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button
-                  variant="default"
-                  size="lg"
-                  onClick={() => setIsQRModalOpen(true)}
-                  iconName="QrCode"
-                  iconPosition="left"
-                  className="btn-warm"
-                >
-                  QR-меню
-                </Button>
-                <Button
                   variant="outline"
                   size="lg"
                   onClick={() => setIsCartOpen(true)}
@@ -517,6 +506,7 @@ const InteractiveMenuOrdering = () => {
         </section>
 
         {/* Menu Section */}
+        <QuickInfoBlocks />
         <section className="py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Content */}
@@ -635,11 +625,7 @@ const InteractiveMenuOrdering = () => {
         onRemoveItem={handleRemoveFromCart}
         onCheckout={handleCheckout}
       />
-      {/* QR Code Modal */}
-      <QRCodeModal
-        isOpen={isQRModalOpen}
-        onClose={() => setIsQRModalOpen(false)}
-      />
+      {/* QR Code Modal removed */}
       {/* Floating Cart Button */}
       {cartItemCount > 0 && (
         <button
