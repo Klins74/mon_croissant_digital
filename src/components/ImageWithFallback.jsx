@@ -10,6 +10,7 @@ const ImageWithFallback = ({
   loading = 'lazy',
   blurDataURL = null,
   priority, // strip non-standard prop so it won't hit <img>
+  sizes = '100vw',
   ...props 
 }) => {
   const [imageSrc, setImageSrc] = useState(null);
@@ -95,11 +96,14 @@ const ImageWithFallback = ({
         >
           <img
             src={imageSrc}
+            srcSet={imageSrc ? `${imageSrc} 400w, ${imageSrc} 800w, ${imageSrc} 1200w` : undefined}
+            sizes={sizes}
             alt={alt}
             className={`w-full h-full object-cover rounded-lg ${className}`}
             onLoad={handleLoad}
             onError={handleError}
             loading={loading}
+            decoding="async"
             {...props}
           />
         </MotionDiv>

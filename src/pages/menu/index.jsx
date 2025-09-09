@@ -10,6 +10,7 @@ import LanguageSwitcher from '../../components/LanguageSwitcher';
 import FullscreenImageViewer from '../../components/FullscreenImageViewer';
 import ProductDetailSheet from '../../components/ProductDetailSheet';
 import ImageWithFallback from '../../components/ImageWithFallback';
+import SEOHead from '../../components/SEOHead';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 
@@ -238,6 +239,8 @@ const MenuPage = () => {
   const [imageViewerOpen, setImageViewerOpen] = useState(false);
   const [productDetailOpen, setProductDetailOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState('');
+  const [showStickyNav, setShowStickyNav] = useState(false);
 
   // Handle deep linking
   const currentSection = searchParams.get('current_section');
@@ -248,6 +251,7 @@ const MenuPage = () => {
       const product = menuProducts.find(p => p.section === currentSection);
       if (product) {
         setExpandedCategories(prev => ({ ...prev, [product.category]: true }));
+        setActiveCategory(product.category);
         // Scroll to category after a short delay
         setTimeout(() => {
           const element = document.getElementById(`category-${product.category}`);
@@ -259,10 +263,50 @@ const MenuPage = () => {
     } else {
       // Expand first category by default
       if (menuCategories.length > 0) {
-        setExpandedCategories({ [menuCategories[0].id]: true });
+        const firstCategory = menuCategories[0].id;
+        setExpandedCategories({ [firstCategory]: true });
+        setActiveCategory(firstCategory);
       }
     }
   }, [currentSection]);
+
+  // Intersection Observer for active category tracking
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-100px 0px -50% 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const categoryId = entry.target.id.replace('category-', '');
+          setActiveCategory(categoryId);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all category sections
+    const categorySections = document.querySelectorAll('[id^="category-"]');
+    categorySections.forEach(section => observer.observe(section));
+
+    return () => {
+      categorySections.forEach(section => observer.unobserve(section));
+    };
+  }, [expandedCategories]);
+
+  // Show/hide sticky nav based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const shouldShow = scrollY > 400; // Show after scrolling past header
+      setShowStickyNav(shouldShow);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Filter products
   const filteredProducts = useMemo(() => {
@@ -325,8 +369,55 @@ const MenuPage = () => {
     );
   };
 
+  const scrollToCategory = (categoryId) => {
+    const element = document.getElementById(`category-${categoryId}`);
+    if (element) {
+      const headerHeight = 80; // Account for sticky header
+      const elementPosition = element.offsetTop - headerHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+    }
+    // Expand category if not already expanded
+    if (!expandedCategories[categoryId]) {
+      setExpandedCategories(prev => ({ ...prev, [categoryId]: true }));
+    }
+  };
+
+  // Get current category and product for SEO
+  const currentCategoryData = currentSection 
+    ? menuCategories.find(cat => {
+        const product = menuProducts.find(p => p.section === currentSection);
+        return product?.category === cat.id;
+      })
+    : null;
+
+  const currentProductData = currentSection 
+    ? menuProducts.find(p => p.section === currentSection)
+    : null;
+
   return (
     <div className="min-h-screen bg-background">
+      {/* SEO Meta Tags */}
+      <SEOHead
+        title={currentProductData ? t(currentProductData.name) : t({
+          RU: "Меню доставки",
+          KZ: "Жеткізу мәзірі", 
+          EN: "Delivery Menu"
+        })}
+        description={currentProductData ? t(currentProductData.description) : t({
+          RU: "Заказать французскую выпечку с доставкой в Алматы. Круассаны, пирожные, хлеб. Халяль сертификат. Доставка 24/7.",
+          KZ: "Алматыда жеткізумен француз нанын тапсырыңыз. Круассандар, тортиктер, нан. Халал сертификаты. Жеткізу 24/7.",
+          EN: "Order French pastries with delivery in Almaty. Croissants, cakes, bread. Halal certified. Delivery 24/7."
+        })}
+        image={currentProductData?.images?.main || currentProductData?.image}
+        url={window.location.pathname + window.location.search}
+        type={currentProductData ? "product" : "website"}
+        product={currentProductData}
+        category={currentCategoryData}
+      />
+
       {/* Header with language switcher */}
       <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -341,6 +432,52 @@ const MenuPage = () => {
 
       {/* Organization Info Blocks */}
       <OrganizationInfoBlocks />
+
+      {/* Sticky Category Navigation */}
+      <AnimatePresence>
+        {showStickyNav && (
+          <MotionDiv
+            className="fixed top-16 left-0 right-0 z-30 bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -100, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center gap-2 py-3 overflow-x-auto scrollbar-hide">
+                {menuCategories.map(category => {
+                  const categoryProducts = groupedProducts[category.id] || [];
+                  if (categoryProducts.length === 0) return null;
+
+                  return (
+                    <MotionDiv
+                      key={category.id}
+                      className={`flex items-center space-x-2 px-4 py-2 rounded-full whitespace-nowrap transition-all duration-200 cursor-pointer shrink-0 ${
+                        activeCategory === category.id
+                          ? 'bg-primary text-primary-foreground shadow-warm scale-105'
+                          : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground hover:scale-102'
+                      }`}
+                      whileHover={{ scale: activeCategory === category.id ? 1.05 : 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => scrollToCategory(category.id)}
+                    >
+                      <Icon name={category.icon} size={16} />
+                      <span className="font-medium text-sm">{t(category.name)}</span>
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        activeCategory === category.id 
+                          ? 'bg-primary-foreground/20 text-primary-foreground' 
+                          : 'bg-muted-foreground/20 text-muted-foreground'
+                      }`}>
+                        {categoryProducts.length}
+                      </span>
+                    </MotionDiv>
+                  );
+                })}
+              </div>
+            </div>
+          </MotionDiv>
+        )}
+      </AnimatePresence>
 
       {/* Search and Filters */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">

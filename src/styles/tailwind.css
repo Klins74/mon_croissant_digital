@@ -215,4 +215,19 @@
     background: radial-gradient(circle, transparent 50%, rgba(44, 24, 16, 0.1) 100%);
     pointer-events: none;
   }
+  
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Smooth scale utilities */
+  .hover\:scale-102:hover {
+    transform: scale(1.02);
+  }
 }

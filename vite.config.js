@@ -28,6 +28,43 @@ export default defineConfig({
         'src/setupTests.js'
       ]
     }
-  }
+  },
+  build: {
+    // Code splitting optimization
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks
+          vendor: ['react', 'react-dom'],
+          ui: ['framer-motion', 'lucide-react'],
+          router: ['react-router-dom'],
+        },
+      },
+    },
+    // Optimize for production
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    // Asset optimization
+    assetsInlineLimit: 4096, // 4kb - inline smaller assets
+    cssCodeSplit: true,
+    sourcemap: false, // Disable sourcemaps in production for performance
+  },
+  // Performance optimizations
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'framer-motion',
+      'lucide-react'
+    ],
+  },
+  // Image optimization hints
+  assetsInclude: ['**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.svg', '**/*.webp'],
 });
 
