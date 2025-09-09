@@ -1,52 +1,177 @@
-// Enhanced menu data structure for grouped display
+// Enhanced menu data structure with i18n support
+export const organizationInfo = {
+  name: {
+    RU: "Mon Croissant",
+    KZ: "Mon Croissant", 
+    EN: "Mon Croissant"
+  },
+  certifications: {
+    RU: "Наличие Сертификатов;\n-ХАЛАЛ\n-Евразийский Экономический Союз Декларации о Соответствии",
+    KZ: "Сертификаттардың болуы;\n-ХАЛАЛ\n-Еуразиялық Экономикалық Одақ Сәйкестік декларациялары",
+    EN: "Availability of Certificates;\n-HALAL\n-Eurasian Economic Union Declarations of Conformity"
+  },
+  values: {
+    RU: "Выпечка по приятным ценам\nПечем из лучших ингредиентов\nСоблюдаем все Французские технологии\nПечем круглосуточно 24/7 БЕЗ ВЫХОДНЫХ",
+    KZ: "Жағымды бағамен пісіру\nЕң жақсы ингредиенттерден пісіреміз\nБарлық француз технологияларын сақтаймыз\nТәулік бойы 24/7 ДЕМАЛЫССЫЗ пісіреміз",
+    EN: "Baking at pleasant prices\nBaking from the best ingredients\nFollowing all French technologies\nBaking 24/7 WITHOUT DAYS OFF"
+  },
+  address: {
+    RU: "Алматы",
+    KZ: "Алматы", 
+    EN: "Almaty"
+  },
+  workSchedule: {
+    RU: "Заявки принимаются до 19:00\n(вс- чт: пт-сб до 18.00)\nМинимальная сумма заказа 10 000 тенге",
+    KZ: "Өтінімдер 19:00-ға дейін қабылданады\n(жс-бс: жм-сб 18.00-ге дейін)\nЕң аз тапсырыс сомасы 10 000 теңге",
+    EN: "Orders accepted until 19:00\n(Sun-Thu: Fri-Sat until 18:00)\nMinimum order amount 10,000 tenge"
+  },
+  contacts: {
+    phone: "+77011133490",
+    instagram: "@mon_croissant_almaty",
+    whatsapp: "+77011133490"
+  }
+};
+
 export const menuCategories = [
   { 
     id: 'croissants', 
-    name: 'Круассаны и венская выпечка', 
+    name: {
+      RU: 'Круассаны и венская выпечка',
+      KZ: 'Круассандар және венгер наны',
+      EN: 'Croissants and Viennese pastries'
+    },
     icon: 'Croissant', 
-    description: 'Традиционные французские круассаны с хрустящей корочкой',
+    description: {
+      RU: 'Традиционные французские круассаны с хрустящей корочкой',
+      KZ: 'Қытырлақ қабығы бар дәстүрлі француз круассандары',
+      EN: 'Traditional French croissants with crispy crust'
+    },
     color: 'from-amber-500 to-orange-500'
   },
   { 
     id: 'pastries', 
-    name: 'Французские пирожные', 
+    name: {
+      RU: 'Французские пирожные',
+      KZ: 'Француз тортиктері',
+      EN: 'French pastries'
+    },
     icon: 'Cake', 
-    description: 'Изысканные десерты по классическим рецептам',
+    description: {
+      RU: 'Изысканные десерты по классическим рецептам',
+      KZ: 'Классикалық рецепттер бойынша дайындалған тәтті десерттер',
+      EN: 'Exquisite desserts following classic recipes'
+    },
     color: 'from-pink-500 to-rose-500'
   },
   { 
     id: 'breads', 
-    name: 'Ремесленный хлеб', 
+    name: {
+      RU: 'Ремесленный хлеб',
+      KZ: 'Қолөнер наны',
+      EN: 'Artisan bread'
+    },
     icon: 'Wheat', 
-    description: 'Свежий хлеб, выпекаемый ежедневно',
+    description: {
+      RU: 'Свежий хлеб, выпекаемый ежедневно',
+      KZ: 'Күн сайын пісірілетін жаңа нан',
+      EN: 'Fresh bread baked daily'
+    },
     color: 'from-yellow-600 to-amber-600'
   },
   { 
     id: 'seasonal', 
-    name: 'Сезонные специальности', 
+    name: {
+      RU: 'Сезонные специальности',
+      KZ: 'Маусымдық ерекшеліктер',
+      EN: 'Seasonal specialties'
+    },
     icon: 'Sparkles', 
-    description: 'Лимитированные предложения по сезону',
+    description: {
+      RU: 'Лимитированные предложения по сезону',
+      KZ: 'Маусым бойынша шектеулі ұсыныстар',
+      EN: 'Limited seasonal offerings'
+    },
     color: 'from-purple-500 to-indigo-500'
   }
 ];
 
 export const dietaryFilters = [
-  { id: 'halal', name: 'Халяль сертификат', icon: 'Star', color: 'text-green-600' },
-  { id: 'vegan', name: 'Веганский', icon: 'Leaf', color: 'text-emerald-600' },
-  { id: 'gluten-free', name: 'Без глютена', icon: 'Shield', color: 'text-blue-600' },
-  { id: 'sugar-free', name: 'Без сахара', icon: 'Heart', color: 'text-red-600' }
+  { 
+    id: 'halal', 
+    name: {
+      RU: 'Халяль сертификат',
+      KZ: 'Халал сертификаты',
+      EN: 'Halal certified'
+    }, 
+    icon: 'Star', 
+    color: 'text-green-600' 
+  },
+  { 
+    id: 'vegan', 
+    name: {
+      RU: 'Веганский',
+      KZ: 'Веган',
+      EN: 'Vegan'
+    }, 
+    icon: 'Leaf', 
+    color: 'text-emerald-600' 
+  },
+  { 
+    id: 'gluten-free', 
+    name: {
+      RU: 'Без глютена',
+      KZ: 'Глютенсіз',
+      EN: 'Gluten-free'
+    }, 
+    icon: 'Shield', 
+    color: 'text-blue-600' 
+  },
+  { 
+    id: 'sugar-free', 
+    name: {
+      RU: 'Без сахара',
+      KZ: 'Қантсыз',
+      EN: 'Sugar-free'
+    }, 
+    icon: 'Heart', 
+    color: 'text-red-600' 
+  }
 ];
 
 export const menuProducts = [
   {
     id: 1,
-    name: "Круассан классический",
-    shortName: "Классический",
-    description: "Традиционный французский круассан со слоистой маслянистой выпечкой, выпекаемый свежим каждые 2 часа",
-    detailedDescription: "Наш фирменный классический круассан изготавливается по традиционной французской технологии ламинирования. 81 слой масла создают неповторимую слоистую текстуру, а свежие ингредиенты гарантируют исключительный вкус.",
+    name: {
+      RU: "Круассан классический",
+      KZ: "Классикалық круассан",
+      EN: "Classic Croissant"
+    },
+    shortName: {
+      RU: "Классический",
+      KZ: "Классикалық",
+      EN: "Classic"
+    },
+    description: {
+      RU: "Традиционный французский круассан со слоистой маслянистой выпечкой, выпекаемый свежим каждые 2 часа",
+      KZ: "Дәстүрлі француз круассаны, қабатты майлы нанмен, әр 2 сағат сайын жаңа пісіріледі",
+      EN: "Traditional French croissant with layered buttery pastry, baked fresh every 2 hours"
+    },
+    detailedDescription: {
+      RU: "Наш фирменный классический круассан изготавливается по традиционной французской технологии ламинирования. 81 слой масла создают неповторимую слоистую текстуру, а свежие ингредиенты гарантируют исключительный вкус.",
+      KZ: "Біздің фирмалық классикалық круассан дәстүрлі француз ламинирлеу технологиясымен жасалады. 81 май қабаты ерекше қабатты текстура жасайды, ал жаңа ингредиенттер ерекше дәмді кепілдендіреді.",
+      EN: "Our signature classic croissant is made using traditional French lamination technique. 81 layers of butter create an incomparable flaky texture, while fresh ingredients guarantee exceptional taste."
+    },
     price: 350,
     originalPrice: null,
-    image: "/Фотки/Круассан классик.png",
+    weight: "65г",
+    images: {
+      main: "/Фотки/Круассан классик.png",
+      gallery: [
+        "/Фотки/Круассан классик.png",
+        "/Фотки/Круассан классик-2.png",
+        "/Фотки/Круассан классик-процесс.png"
+      ]
+    },
     category: 'croissants',
     subcategory: 'classic',
     dietary: ['halal'],
@@ -56,10 +181,26 @@ export const menuProducts = [
     isNew: false,
     isPopular: true,
     isBestseller: true,
-    ingredients: "Французское масло, органическая мука, свежие дрожжи, морская соль, молоко",
-    allergens: ["Глютен", "Молочные продукты"],
-    technique: "Традиционная техника ламинирования с 81 слоем масла",
-    prepTime: "2 часа",
+    ingredients: {
+      RU: "Французское масло, органическая мука, свежие дрожжи, морская соль, молоко",
+      KZ: "Француз майы, органикалық ұн, жаңа ашытқы, теңіз тұзы, сүт",
+      EN: "French butter, organic flour, fresh yeast, sea salt, milk"
+    },
+    allergens: {
+      RU: ["Глютен", "Молочные продукты"],
+      KZ: ["Глютен", "Сүт өнімдері"],
+      EN: ["Gluten", "Dairy products"]
+    },
+    technique: {
+      RU: "Традиционная техника ламинирования с 81 слоем масла",
+      KZ: "81 май қабатымен дәстүрлі ламинирлеу техникасы",
+      EN: "Traditional lamination technique with 81 layers of butter"
+    },
+    prepTime: {
+      RU: "2 часа",
+      KZ: "2 сағат",
+      EN: "2 hours"
+    },
     nutritionalInfo: { 
       calories: 280, 
       protein: 6, 
@@ -68,18 +209,46 @@ export const menuProducts = [
       fiber: 2,
       sugar: 4
     },
-    tags: ["Классика", "Популярное", "24/7"],
-    availableHours: "24/7"
+    tags: {
+      RU: ["Классика", "Популярное", "24/7"],
+      KZ: ["Классика", "Танымал", "24/7"],
+      EN: ["Classic", "Popular", "24/7"]
+    },
+    availableHours: "24/7",
+    section: "58b29529-db33-45fc-a4d1-5e8461753ebe"
   },
   {
     id: 2,
-    name: "Круассан с шоколадом",
-    shortName: "Шоколадный",
-    description: "Маслянистый круассан с премиальным бельгийским темным шоколадом",
-    detailedDescription: "Сочетание нашего классического круассана с высококачественным бельгийским шоколадом 70% какао. Каждый кусочек тает во рту, создавая идеальный баланс сладости и маслянистости.",
+    name: {
+      RU: "Круассан с шоколадом",
+      KZ: "Шоколадты круассан",
+      EN: "Chocolate Croissant"
+    },
+    shortName: {
+      RU: "Шоколадный",
+      KZ: "Шоколадты",
+      EN: "Chocolate"
+    },
+    description: {
+      RU: "Маслянистый круассан с премиальным бельгийским темным шоколадом",
+      KZ: "Сапалы бельгиялық қара шоколадты майлы круассан",
+      EN: "Buttery croissant with premium Belgian dark chocolate"
+    },
+    detailedDescription: {
+      RU: "Сочетание нашего классического круассана с высококачественным бельгийским шоколадом 70% какао. Каждый кусочек тает во рту, создавая идеальный баланс сладости и маслянистости.",
+      KZ: "Біздің классикалық круассанның жоғары сапалы бельгиялық 70% какао шоколадымен үйлесімі. Әр кесек ауызда ериді, тәттілік пен майлылықтың керемет тепе-теңдігін жасайды.",
+      EN: "Combination of our classic croissant with high-quality Belgian 70% cocoa chocolate. Each bite melts in your mouth, creating the perfect balance of sweetness and butteriness."
+    },
     price: 580,
     originalPrice: null,
-    image: "/Фотки/Круассан с шоколадом.png",
+    weight: "75г",
+    images: {
+      main: "/Фотки/Круассан с шоколадом.png",
+      gallery: [
+        "/Фотки/Круассан с шоколадом.png",
+        "/Фотки/Круассан с шоколадом-2.png"
+      ]
+    },
     category: 'croissants',
     subcategory: 'filled',
     dietary: ['halal'],
@@ -89,10 +258,26 @@ export const menuProducts = [
     isNew: false,
     isPopular: true,
     isBestseller: false,
-    ingredients: "Тесто круассан, бельгийский темный шоколад (70% какао)",
-    allergens: ["Глютен", "Молочные продукты", "Может содержать орехи"],
-    technique: "Ручная раскатка с премиальным шоколадом, двойная расстойка",
-    prepTime: "2.5 часа",
+    ingredients: {
+      RU: "Тесто круассан, бельгийский темный шоколад (70% какао)",
+      KZ: "Круассан қамыры, бельгиялық қара шоколад (70% какао)",
+      EN: "Croissant dough, Belgian dark chocolate (70% cocoa)"
+    },
+    allergens: {
+      RU: ["Глютен", "Молочные продукты", "Может содержать орехи"],
+      KZ: ["Глютен", "Сүт өнімдері", "Жаңғақтарды қамтуы мүмкін"],
+      EN: ["Gluten", "Dairy products", "May contain nuts"]
+    },
+    technique: {
+      RU: "Ручная раскатка с премиальным шоколадом, двойная расстойка",
+      KZ: "Сапалы шоколадпен қолмен жайып жасау, қос ашыту",
+      EN: "Hand-rolled with premium chocolate, double proofing"
+    },
+    prepTime: {
+      RU: "2.5 часа",
+      KZ: "2.5 сағат",
+      EN: "2.5 hours"
+    },
     nutritionalInfo: { 
       calories: 420, 
       protein: 8, 
@@ -101,8 +286,13 @@ export const menuProducts = [
       fiber: 3,
       sugar: 18
     },
-    tags: ["Шоколад", "Премиум", "Популярное"],
-    availableHours: "24/7"
+    tags: {
+      RU: ["Шоколад", "Премиум", "Популярное"],
+      KZ: ["Шоколад", "Премиум", "Танымал"],
+      EN: ["Chocolate", "Premium", "Popular"]
+    },
+    availableHours: "24/7",
+    section: "58b29529-db33-45fc-a4d1-5e8461753ebe"
   },
   {
     id: 3,
