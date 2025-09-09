@@ -135,13 +135,15 @@ const FullscreenImageViewer = ({
 
   return (
     <AnimatePresence mode="wait">
-      <MotionDiv
-        className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-      >
+      {isOpen && (
+        <MotionDiv
+          key="fullscreen-viewer"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
         {/* Header */}
         <div className="absolute top-0 left-0 right-0 z-10 p-4 bg-gradient-to-b from-black/50 to-transparent">
           <div className="flex items-center justify-between">
@@ -312,6 +314,7 @@ const FullscreenImageViewer = ({
           </div>
         </div>
       </MotionDiv>
+      )}
     </AnimatePresence>
   );
 };

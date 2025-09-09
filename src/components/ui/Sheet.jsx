@@ -10,9 +10,7 @@ const SheetClose = DialogPrimitive.Close;
 
 const SheetPortal = ({ children, ...props }) => (
   <DialogPrimitive.Portal {...props}>
-    <AnimatePresence mode="wait">
-      {children}
-    </AnimatePresence>
+    {children}
   </DialogPrimitive.Portal>
 );
 

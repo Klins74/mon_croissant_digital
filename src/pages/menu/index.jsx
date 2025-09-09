@@ -41,118 +41,157 @@ const ProductCard = ({ product, onViewDetails, onAddToCart, language }) => {
 
   return (
     <MotionDiv 
-      className="bg-card border-b border-border last:border-b-0 hover:bg-muted/30 transition-colors"
+      className="bg-card border-b border-border last:border-b-0 hover:bg-accent/10 transition-all duration-200 hover:shadow-warm"
       variants={cardHoverVariants}
       initial="rest"
       whileHover="hover"
       whileTap="rest"
     >
-      <div className="flex items-center gap-4 p-4">
-        {/* Product Image - Mobile optimized */}
-        <div 
-          className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-muted cursor-pointer"
-          onClick={handleImageClick}
-        >
-          <ImageWithFallback
-            src={product.images?.main || product.image}
-            alt={t(product.name)}
-            className="w-full h-full object-cover"
-            priority={false}
-          />
-          
-          {/* Badges */}
-          <div className="absolute top-1 left-1 flex flex-col gap-1">
-            {product.isNew && (
-              <span className="bg-accent text-accent-foreground text-[10px] px-1.5 py-0.5 rounded-full font-medium">
-                {t({ RU: 'Новинка', KZ: 'Жаңа', EN: 'New' })}
-              </span>
-            )}
-            {product.isBestseller && (
-              <span className="bg-primary text-primary-foreground text-[10px] px-1.5 py-0.5 rounded-full font-medium">
-                {t({ RU: 'Хит', KZ: 'Хит', EN: 'Hit' })}
-              </span>
-            )}
-          </div>
-
-          {/* Stock overlay */}
-          {!product.inStock && (
-            <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-              <span className="bg-red-500 text-white px-2 py-1 rounded-full text-[10px] font-medium">
-                {t({ RU: 'Нет в наличии', KZ: 'Жоқ', EN: 'Out of stock' })}
-              </span>
-            </div>
-          )}
-
-          {/* Zoom indicator */}
-          <div className="absolute top-1 right-1 bg-black/50 text-white rounded-full p-1">
-            <Icon name="ZoomIn" size={12} />
-          </div>
-        </div>
-
-        {/* Product Info */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between mb-1">
-            <h3 className="text-sm font-medium text-foreground line-clamp-2 leading-tight">
-              {t(product.name)}
-            </h3>
-            <div className="flex items-center gap-1 ml-2 shrink-0">
-              <Icon name="Star" size={12} className="text-yellow-500 fill-current" />
-              <span className="text-xs text-muted-foreground">{product.rating}</span>
-            </div>
-          </div>
-          
-          <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed mb-2">
-            {t(product.description)}
-          </p>
-
-          {/* Tags and dietary info */}
-          <div className="flex items-center gap-2 mb-2 flex-wrap">
-            {product.weight && (
-              <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">
-                {product.weight}
-              </span>
-            )}
-            {product.dietary?.includes('halal') && (
-              <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
-                {t({ RU: 'Халяль', KZ: 'Халал', EN: 'Halal' })}
-              </span>
-            )}
-          </div>
-
-          {/* Price and actions */}
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="text-base font-semibold text-foreground">
-                ₸{product.price.toLocaleString()}
-              </div>
-              {product.originalPrice && (
-                <div className="text-xs text-muted-foreground line-through">
-                  ₸{product.originalPrice.toLocaleString()}
-                </div>
+      <div className="p-6">
+        {/* Product Header */}
+        <div className="flex items-start gap-6 mb-4">
+          {/* Product Image - Larger */}
+          <div 
+            className="relative w-28 h-28 rounded-2xl overflow-hidden shrink-0 bg-muted cursor-pointer shadow-warm"
+            onClick={handleImageClick}
+          >
+            <ImageWithFallback
+              src={product.images?.main || product.image}
+              alt={t(product.name)}
+              className="w-full h-full object-cover"
+              priority={false}
+            />
+            
+            {/* Badges */}
+            <div className="absolute top-2 left-2 flex flex-col gap-1">
+              {product.isNew && (
+                <span className="bg-secondary text-secondary-foreground text-xs px-2 py-1 rounded-full font-medium shadow-sm">
+                  {t({ RU: 'Новинка', KZ: 'Жаңа', EN: 'New' })}
+                </span>
+              )}
+              {product.isBestseller && (
+                <span className="bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-medium shadow-sm">
+                  {t({ RU: 'Хит продаж', KZ: 'Хит сату', EN: 'Bestseller' })}
+                </span>
               )}
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => onViewDetails(product)}
-                className="p-2 text-muted-foreground hover:text-foreground transition-colors"
-                aria-label={t({ RU: 'Подробнее', KZ: 'Толығырақ', EN: 'Details' })}
-              >
-                <Icon name="Info" size={16} />
-              </button>
-              
-              <MotionDiv
-                as="button"
-                className="min-w-[44px] h-11 rounded-xl bg-primary text-primary-foreground flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed font-medium text-sm"
-                variants={cardHoverVariants}
-                whileHover="hover"
-                whileTap="rest"
-                onClick={handleAddToCart}
-                disabled={!product.inStock}
-                aria-label={t({ RU: 'Добавить в корзину', KZ: 'Себетке қосу', EN: 'Add to cart' })}
-              >
-                <Icon name="Plus" size={18} />
-              </MotionDiv>
+            {/* Stock overlay */}
+            {!product.inStock && (
+              <div className="absolute inset-0 bg-black/60 flex items-center justify-center rounded-2xl">
+                <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  {t({ RU: 'Нет в наличии', KZ: 'Қоймада жоқ', EN: 'Out of stock' })}
+                </span>
+              </div>
+            )}
+
+            {/* Zoom indicator */}
+            <div className="absolute bottom-2 right-2 bg-primary/80 text-primary-foreground rounded-full p-1.5">
+              <Icon name="ZoomIn" size={14} />
+            </div>
+          </div>
+
+          {/* Product Info */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-start justify-between mb-2">
+              <h3 className="text-lg font-semibold text-foreground line-clamp-2 leading-tight">
+                {t(product.name)}
+              </h3>
+              <div className="flex items-center gap-1 ml-3 shrink-0">
+                <Icon name="Star" size={16} className="text-secondary fill-current" />
+                <span className="text-sm font-medium text-foreground">{product.rating}</span>
+                <span className="text-xs text-muted-foreground">({product.reviewCount})</span>
+              </div>
+            </div>
+            
+            <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed mb-3">
+              {t(product.description)}
+            </p>
+
+            {/* Nutritional Info */}
+            {product.nutritionalInfo && (
+              <div className="grid grid-cols-3 gap-2 mb-3">
+                <div className="bg-accent/20 rounded-lg p-2 text-center">
+                  <div className="text-xs text-muted-foreground">
+                    {t({ RU: 'Калории', KZ: 'Калория', EN: 'Calories' })}
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    {product.nutritionalInfo.calories}
+                  </div>
+                </div>
+                <div className="bg-accent/20 rounded-lg p-2 text-center">
+                  <div className="text-xs text-muted-foreground">
+                    {t({ RU: 'Белки', KZ: 'Ақуыз', EN: 'Protein' })}
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    {product.nutritionalInfo.protein}г
+                  </div>
+                </div>
+                <div className="bg-accent/20 rounded-lg p-2 text-center">
+                  <div className="text-xs text-muted-foreground">
+                    {t({ RU: 'Жиры', KZ: 'Май', EN: 'Fat' })}
+                  </div>
+                  <div className="text-sm font-semibold text-foreground">
+                    {product.nutritionalInfo.fat}г
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tags and dietary info */}
+            <div className="flex items-center gap-2 mb-3 flex-wrap">
+              {product.weight && (
+                <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded-full font-medium">
+                  {product.weight}
+                </span>
+              )}
+              {product.dietary?.includes('halal') && (
+                <span className="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
+                  {t({ RU: 'Халяль', KZ: 'Халал', EN: 'Halal' })}
+                </span>
+              )}
+              {tArray(product.tags).slice(0, 2).map((tag, index) => (
+                <span key={index} className="text-xs bg-secondary/10 text-secondary-foreground px-3 py-1 rounded-full font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Price and actions */}
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xl font-bold text-foreground">
+                  ₸{product.price.toLocaleString()}
+                </div>
+                {product.originalPrice && (
+                  <div className="text-sm text-muted-foreground line-through">
+                    ₸{product.originalPrice.toLocaleString()}
+                  </div>
+                )}
+              </div>
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => onViewDetails(product)}
+                  className="p-3 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-xl transition-colors"
+                  aria-label={t({ RU: 'Подробнее', KZ: 'Толығырақ', EN: 'Details' })}
+                >
+                  <Icon name="Info" size={20} />
+                </button>
+                
+                <MotionDiv
+                  as="button"
+                  className="min-w-[52px] h-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed font-semibold text-sm shadow-warm hover:shadow-warm-lg"
+                  variants={cardHoverVariants}
+                  whileHover="hover"
+                  whileTap="rest"
+                  onClick={handleAddToCart}
+                  disabled={!product.inStock}
+                  aria-label={t({ RU: 'Добавить в корзину', KZ: 'Себетке қосу', EN: 'Add to cart' })}
+                >
+                  <Icon name="Plus" size={20} />
+                </MotionDiv>
+              </div>
             </div>
           </div>
         </div>
@@ -167,38 +206,44 @@ const CategorySection = ({ category, products, onViewDetails, onAddToCart, isExp
 
   return (
     <div ref={sectionRef} id={`category-${category.id}`} className="mb-6">
-      {/* Category Header - Mobile optimized */}
+      {/* Category Header - Enhanced with burgundy theme */}
       <MotionDiv
-        className="flex items-center justify-between p-4 bg-card border border-border rounded-t-xl cursor-pointer"
+        className="flex items-center justify-between p-6 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground border border-primary rounded-t-2xl cursor-pointer shadow-warm hover:shadow-warm-lg"
         onClick={onToggle}
         variants={cardHoverVariants}
         initial="rest"
         whileHover="hover"
         whileTap="rest"
       >
-        <div className="flex items-center space-x-3">
-          <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color} shadow-sm`}>
-            <Icon name={category.icon} size={20} className="text-white" />
+        <div className="flex items-center space-x-4">
+          <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm">
+            <Icon name={category.icon} size={24} className="text-white" />
           </div>
           <div className="flex-1">
-            <h2 className="text-lg font-semibold text-foreground">
+            <h2 className="text-xl font-bold text-white">
               {t(category.name)}
             </h2>
-            <p className="text-sm text-muted-foreground">
-              {products.length} {t({ RU: 'позиций', KZ: 'дана', EN: 'items' })}
+            <p className="text-sm text-white/80">
+              {products.length} {t({ RU: 'позиций', KZ: 'дана', EN: 'items' })} • {products.filter(p => p.inStock).length} {t({ RU: 'в наличии', KZ: 'қоймада', EN: 'available' })}
             </p>
           </div>
         </div>
         
-        <div className="flex items-center space-x-2">
-          <span className="text-sm font-medium text-primary">
-            {products.filter(p => p.inStock).length}/{products.length}
-          </span>
+        <div className="flex items-center space-x-3">
+          <div className="text-right">
+            <div className="text-sm font-medium text-white">
+              {products.filter(p => p.inStock).length}/{products.length}
+            </div>
+            <div className="text-xs text-white/70">
+              {t({ RU: 'доступно', KZ: 'бар', EN: 'available' })}
+            </div>
+          </div>
           <MotionDiv
             animate={{ rotate: isExpanded ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="bg-white/20 rounded-full p-2"
           >
-            <Icon name="ChevronDown" size={20} className="text-muted-foreground" />
+            <Icon name="ChevronDown" size={20} className="text-white" />
           </MotionDiv>
         </div>
       </MotionDiv>
@@ -210,16 +255,16 @@ const CategorySection = ({ category, products, onViewDetails, onAddToCart, isExp
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden bg-card border-x border-b border-border rounded-b-xl"
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            className="overflow-hidden bg-card border-x border-b border-border rounded-b-2xl shadow-warm"
           >
-            <div className="divide-y divide-border">
+            <div className="divide-y divide-border/50">
               {products.map((product, index) => (
                 <MotionDiv
                   key={product.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: index * 0.05 }}
+                  transition={{ duration: 0.3, delay: index * 0.1, ease: 'easeOut' }}
                 >
                   <ProductCard
                     product={product}
