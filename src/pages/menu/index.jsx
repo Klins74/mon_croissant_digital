@@ -13,15 +13,24 @@ import ImageWithFallback from '../../components/ImageWithFallback';
 import SEOHead from '../../components/SEOHead';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
+import { useToast } from '../../components/ui/Toast';
 
 const ProductCard = ({ product, onViewDetails, onAddToCart, language }) => {
   const { t, tArray } = useLanguage();
+  const { success } = useToast();
   const [quantity, setQuantity] = useState(1);
   const [isFlying, setIsFlying] = useState(false);
 
   const handleAddToCart = () => {
     setIsFlying(true);
     onAddToCart({ ...product, quantity });
+    
+    // Show success toast
+    success(
+      t({ RU: 'Добавлено в корзину!', KZ: 'Себетке қосылды!', EN: 'Added to cart!' }),
+      t({ RU: `${t(product.name)} добавлен в корзину`, KZ: `${t(product.name)} себетке қосылды`, EN: `${t(product.name)} added to cart` })
+    );
+    
     setTimeout(() => setIsFlying(false), 800);
   };
 

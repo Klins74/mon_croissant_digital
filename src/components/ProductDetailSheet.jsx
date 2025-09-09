@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
 import { MotionDiv, cardHoverVariants } from './motion/MotionWrapper';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useCart } from '../contexts/CartContext';
@@ -7,6 +6,13 @@ import FullscreenImageViewer from './FullscreenImageViewer';
 import ImageWithFallback from './ImageWithFallback';
 import Icon from './AppIcon';
 import Button from './ui/Button';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from './ui/Sheet';
 
 const ProductDetailSheet = ({ product, isOpen, onClose }) => {
   const { t, tArray } = useLanguage();
@@ -61,64 +67,35 @@ const ProductDetailSheet = ({ product, isOpen, onClose }) => {
   const totalPrice = product.price * quantity;
 
   return (
-    <AnimatePresence mode="wait">
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <MotionDiv
-            className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-          />
+    <Sheet open={isOpen} onOpenChange={onClose}>
+      <SheetContent side="bottom" className="max-h-[95vh] overflow-hidden p-0">
+        <div className="h-full flex flex-col">
 
-          {/* Sheet */}
-          <MotionDiv
-            className="fixed inset-x-0 bottom-0 z-50 bg-background rounded-t-3xl shadow-2xl max-h-[95vh] overflow-hidden"
-            initial={{ y: '100%' }}
-            animate={{ y: 0 }}
-            exit={{ y: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          >
-            {/* Handle */}
-            <div className="flex justify-center py-3 border-b border-border">
-              <div className="w-12 h-1 bg-muted rounded-full" />
-            </div>
-
-            {/* Scrollable Content */}
-            <div className="overflow-y-auto pb-24" style={{ maxHeight: 'calc(95vh - 120px)' }}>
-              {/* Header */}
-              <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b border-border">
-                <div className="flex items-center justify-between p-4">
-                  <div className="flex-1 min-w-0">
-                    <h2 className="text-xl font-bold text-foreground truncate">
-                      {t(product.name)}
-                    </h2>
-                    <div className="flex items-center gap-2 mt-1">
-                      <div className="flex items-center gap-1">
-                        <Icon name="Star" size={16} className="text-yellow-500 fill-current" />
-                        <span className="text-sm font-medium">{product.rating}</span>
-                        <span className="text-sm text-muted-foreground">
-                          ({product.reviewCount} {t({ RU: 'отзывов', KZ: 'пікір', EN: 'reviews' })})
-                        </span>
-                      </div>
-                      {product.weight && (
-                        <span className="text-sm bg-muted text-muted-foreground px-2 py-1 rounded-full">
-                          {product.weight}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <button
-                    onClick={onClose}
-                    className="p-2 rounded-full hover:bg-muted transition-colors ml-4"
-                    aria-label={t({ RU: 'Закрыть', KZ: 'Жабу', EN: 'Close' })}
-                  >
-                    <Icon name="X" size={24} />
-                  </button>
+          {/* Header */}
+          <SheetHeader className="p-4 border-b border-border">
+            <SheetTitle className="text-left">
+              {t(product.name)}
+            </SheetTitle>
+            <SheetDescription className="text-left">
+              <div className="flex items-center gap-2 mt-1">
+                <div className="flex items-center gap-1">
+                  <Icon name="Star" size={16} className="text-yellow-500 fill-current" />
+                  <span className="text-sm font-medium">{product.rating}</span>
+                  <span className="text-sm text-muted-foreground">
+                    ({product.reviewCount} {t({ RU: 'отзывов', KZ: 'пікір', EN: 'reviews' })})
+                  </span>
                 </div>
+                {product.weight && (
+                  <span className="text-sm bg-muted text-muted-foreground px-2 py-1 rounded-full">
+                    {product.weight}
+                  </span>
+                )}
               </div>
+            </SheetDescription>
+          </SheetHeader>
+
+          {/* Scrollable Content */}
+          <div className="flex-1 overflow-y-auto pb-24">
 
               {/* Image Gallery */}
               <div className="p-4">
@@ -328,11 +305,11 @@ const ProductDetailSheet = ({ product, isOpen, onClose }) => {
                     )}
                   </div>
                 </div>
-              </div>
             </div>
+          </div>
 
-            {/* Fixed Bottom Action Bar */}
-            <div className="absolute bottom-0 left-0 right-0 bg-background border-t border-border p-4">
+          {/* Fixed Bottom Action Bar */}
+          <div className="absolute bottom-0 left-0 right-0 bg-background border-t border-border p-4">
               <div className="flex items-center gap-4">
                 {/* Quantity Selector */}
                 <div className="flex items-center bg-muted rounded-xl overflow-hidden">
@@ -380,20 +357,19 @@ const ProductDetailSheet = ({ product, isOpen, onClose }) => {
                   </Button>
                 </MotionDiv>
               </div>
-            </div>
+          </div>
+        </div>
 
-            {/* Fullscreen Image Viewer */}
-            <FullscreenImageViewer
-              isOpen={imageViewerOpen}
-              onClose={() => setImageViewerOpen(false)}
-              images={images}
-              initialIndex={selectedImageIndex}
-              productName={t(product.name)}
-            />
-          </MotionDiv>
-        </>
-      )}
-    </AnimatePresence>
+        {/* Fullscreen Image Viewer */}
+        <FullscreenImageViewer
+          isOpen={imageViewerOpen}
+          onClose={() => setImageViewerOpen(false)}
+          images={images}
+          initialIndex={selectedImageIndex}
+          productName={t(product.name)}
+        />
+      </SheetContent>
+    </Sheet>
   );
 };
 
