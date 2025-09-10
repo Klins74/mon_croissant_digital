@@ -5,6 +5,70 @@ export const organizationInfo = {
     KZ: "French Croissant", 
     EN: "French Croissant"
   },
+  {
+    id: 19,
+    name: "Круассан с семгой",
+    shortName: "Сёмга",
+    description: "Слоёный круассан с нежной слабосолёной семгой и крем-сыром",
+    detailedDescription: "Баланс рыбы и мягкого крем-сыра, свежесть и питательность в каждом укусе.",
+    price: 850,
+    originalPrice: null,
+    weight: "110г",
+    images: {
+      main: "/круассан_семга_1.jpg",
+      gallery: [
+        "/круассан_семга_1.jpg",
+        "/круассан_семга_2.jpg"
+      ]
+    },
+    category: 'croissants',
+    subcategory: 'savory',
+    dietary: ['halal'],
+    rating: 4.8,
+    reviewCount: 22,
+    inStock: true,
+    isNew: true,
+    isPopular: true,
+    isBestseller: false,
+    ingredients: "Тесто круассан, слабосолёная семга, крем-сыр, зелень",
+    allergens: ["Глютен", "Рыба", "Молочные продукты"],
+    prepTime: "2 часа",
+    nutritionalInfo: { calories: 390, protein: 17, carbs: 30, fat: 20, sugar: 3 },
+    tags: ["Сёмга", "Сытное"],
+    availableHours: "24/7"
+  },
+  {
+    id: 20,
+    name: "Круассан с курицей",
+    shortName: "Курица",
+    description: "Слоёный круассан с сочной курицей и сливочным соусом",
+    detailedDescription: "Аппетитная куриная начинка с лёгким сливочным соусом и зеленью.",
+    price: 780,
+    originalPrice: null,
+    weight: "120г",
+    images: {
+      main: "/круассан_курица_1.jpg",
+      gallery: [
+        "/круассан_курица_1.jpg",
+        "/круассан_курица_2.jpg"
+      ]
+    },
+    category: 'croissants',
+    subcategory: 'savory',
+    dietary: ['halal'],
+    rating: 4.7,
+    reviewCount: 31,
+    inStock: true,
+    isNew: true,
+    isPopular: false,
+    isBestseller: false,
+    ingredients: "Тесто круассан, курица, сливочный соус, зелень",
+    allergens: ["Глютен", "Молочные продукты"],
+    prepTime: "2 часа",
+    nutritionalInfo: { calories: 420, protein: 19, carbs: 32, fat: 22, sugar: 3 },
+    tags: ["Курица", "Сытное"],
+    availableHours: "24/7"
+  },
   certifications: {
     RU: "Наличие Сертификатов;\n-ХАЛАЛ\n-Евразийский Экономический Союз Декларации о Соответствии",
     KZ: "Сертификаттардың болуы;\n-ХАЛАЛ\n-Еуразиялық Экономикалық Одақ Сәйкестік декларациялары",
@@ -36,15 +100,15 @@ export const menuCategories = [
   { 
     id: 'croissants', 
     name: {
-      RU: 'Круассаны и венская выпечка',
-      KZ: 'Круассандар және венгер наны',
-      EN: 'Croissants and Viennese pastries'
+      RU: 'Круассаны',
+      KZ: 'Круассандар',
+      EN: 'Croissants'
     },
     icon: 'Croissant', 
     description: {
-      RU: 'Традиционные французские круассаны с хрустящей корочкой',
-      KZ: 'Қытырлақ қабығы бар дәстүрлі француз круассандары',
-      EN: 'Traditional French croissants with crispy crust'
+      RU: 'Традиционные французские круассаны',
+      KZ: 'Дәстүрлі француз круассандары',
+      EN: 'Traditional French croissants'
     },
     color: 'from-amber-500 to-orange-500'
   },
