@@ -18,14 +18,15 @@ const BrandLogo = ({ className = '', compact = false }) => {
         <span
           className={`absolute inset-0 ${textBaseClasses}`}
           style={{
-            WebkitTextStroke: '2px rgba(30, 30, 30, 0.95)',
-            color: 'transparent'
+            WebkitTextStroke: '2px rgba(255, 255, 255, 0.98)',
+            color: 'transparent',
+            textShadow: '0 0 2px rgba(255,255,255,0.8), 0 0 1px rgba(255,255,255,0.8)'
           }}
         >
           FRENCH&nbsp;CROISS
         </span>
         {/* Fill layer */}
-        <span className={`${textBaseClasses}`} style={{ color: '#ffffff' }}>
+        <span className={`${textBaseClasses}`} style={{ color: '#1d1d1f' }}>
           FRENCH&nbsp;CROISS
         </span>
       </div>
@@ -41,17 +42,17 @@ const BrandLogo = ({ className = '', compact = false }) => {
         {/* Tower outline */}
         <path
           d="M18 2 L28 34 L34 58 H2 L8 34 Z"
-          fill="#ffffff"
-          stroke="rgba(30,30,30,0.95)"
+          fill="#1d1d1f"
+          stroke="rgba(255,255,255,0.98)"
           strokeWidth="2"
           strokeLinejoin="round"
         />
         {/* Crossbeams */}
-        <path d="M8 34 H28" stroke="rgba(30,30,30,0.95)" strokeWidth="2" />
-        <path d="M6 42 H30" stroke="rgba(30,30,30,0.95)" strokeWidth="2" />
-        <path d="M4 50 H32" stroke="rgba(30,30,30,0.95)" strokeWidth="2" />
+        <path d="M8 34 H28" stroke="rgba(255,255,255,0.98)" strokeWidth="2" />
+        <path d="M6 42 H30" stroke="rgba(255,255,255,0.98)" strokeWidth="2" />
+        <path d="M4 50 H32" stroke="rgba(255,255,255,0.98)" strokeWidth="2" />
         {/* Spire */}
-        <path d="M18 2 V12" stroke="rgba(30,30,30,0.95)" strokeWidth="2" />
+        <path d="M18 2 V12" stroke="rgba(255,255,255,0.98)" strokeWidth="2" />
       </svg>
 
       {/* Remaining letters "NT" with the same layered effect */}
@@ -59,13 +60,14 @@ const BrandLogo = ({ className = '', compact = false }) => {
         <span
           className={`absolute inset-0 ${textBaseClasses}`}
           style={{
-            WebkitTextStroke: '2px rgba(30, 30, 30, 0.95)',
-            color: 'transparent'
+            WebkitTextStroke: '2px rgba(255, 255, 255, 0.98)',
+            color: 'transparent',
+            textShadow: '0 0 2px rgba(255,255,255,0.8), 0 0 1px rgba(255,255,255,0.8)'
           }}
         >
           NT
         </span>
-        <span className={`${textBaseClasses}`} style={{ color: '#ffffff' }}>
+        <span className={`${textBaseClasses}`} style={{ color: '#1d1d1f' }}>
           NT
         </span>
       </div>
