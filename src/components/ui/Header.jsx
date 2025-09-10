@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Icon from '../AppIcon';
+import BrandLogo from '../BrandLogo';
 import Button from './Button';
 import { useCart } from '../../contexts/CartContext';
 import translations from '../../translations';
@@ -64,24 +65,11 @@ const Header = ({ isCollapsed = false }) => {
         <div className="flex items-center justify-between h-16 px-4 lg:px-6">
           {/* Logo Section */}
           <div className="flex items-center space-x-3">
-            <div className="flex items-center justify-center w-10 h-10 bg-primary rounded-lg">
-              <svg
-                viewBox="0 0 24 24"
-                className="w-6 h-6 text-primary-foreground"
-                fill="currentColor"
-              >
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                <circle cx="12" cy="9" r="1.5" fill="var(--color-accent)"/>
-              </svg>
+            <div className="hidden sm:flex items-center justify-center w-10 h-10 rounded-lg bg-[linear-gradient(180deg,#8b3a3a_0%,#6f2e2e_100%)] border border-[rgba(30,30,30,0.25)]">
+              {/* Decorative square kept for visual weight on desktop */}
+              <Icon name="Croissant" size={18} className="text-white/90" />
             </div>
-            <div className="flex flex-col">
-              <h1 className="text-lg font-heading font-semibold text-foreground leading-tight">
-                FrenchCroissant
-              </h1>
-              <span className="text-xs font-accent text-muted-foreground -mt-1">
-                Digital
-              </span>
-            </div>
+            <BrandLogo className="drop-shadow-sm" />
           </div>
 
           {/* Desktop Navigation */}
