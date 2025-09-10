@@ -76,20 +76,22 @@ const ProductDetailSheet = ({ product, isOpen, onClose }) => {
             <SheetTitle className="text-left">
               {t(product.name)}
             </SheetTitle>
-            <SheetDescription className="text-left">
-              <div className="flex items-center gap-2 mt-1">
-                <div className="flex items-center gap-1">
-                  <Icon name="Star" size={16} className="text-yellow-500 fill-current" />
-                  <span className="text-sm font-medium">{product.rating}</span>
-                  <span className="text-sm text-muted-foreground">
-                    ({product.reviewCount} {t({ RU: 'отзывов', KZ: 'пікір', EN: 'reviews' })})
-                  </span>
+            <SheetDescription asChild>
+              <div className="text-left">
+                <div className="flex items-center gap-2 mt-1">
+                  <div className="flex items-center gap-1">
+                    <Icon name="Star" size={16} className="text-yellow-500 fill-current" />
+                    <span className="text-sm font-medium">{product.rating}</span>
+                    <span className="text-sm text-muted-foreground">
+                      ({product.reviewCount} {t({ RU: 'отзывов', KZ: 'пікір', EN: 'reviews' })})
+                    </span>
+                  </div>
+                  {product.weight && (
+                    <span className="text-sm bg-muted text-muted-foreground px-2 py-1 rounded-full">
+                      {product.weight}
+                    </span>
+                  )}
                 </div>
-                {product.weight && (
-                  <span className="text-sm bg-muted text-muted-foreground px-2 py-1 rounded-full">
-                    {product.weight}
-                  </span>
-                )}
               </div>
             </SheetDescription>
           </SheetHeader>
