@@ -208,7 +208,7 @@ const CategorySection = ({ category, products, onViewDetails, onAddToCart, isExp
     <div ref={sectionRef} id={`category-${category.id}`} className="mb-6">
       {/* Category Header - Enhanced with burgundy theme */}
       <MotionDiv
-        className="flex items-center justify-between p-6 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground border border-primary rounded-t-2xl cursor-pointer shadow-warm hover:shadow-warm-lg filter saturate-125"
+        className="flex items-center justify-between p-6 bg-gradient-to-r from-[#D4A574] via-[#D4A574] to-[#D4A574] text-primary-foreground border border-primary rounded-t-2xl cursor-pointer shadow-warm hover:shadow-warm-lg filter saturate-150 contrast-110"
         onClick={onToggle}
         variants={cardHoverVariants}
         initial="rest"
