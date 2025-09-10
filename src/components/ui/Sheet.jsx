@@ -58,6 +58,7 @@ const SheetContent = React.forwardRef(({
   side = 'bottom', 
   className = '', 
   children, 
+  enableDragToClose = true,
   ...props 
 }, ref) => {
   const sideClasses = {
@@ -86,7 +87,7 @@ const SheetContent = React.forwardRef(({
             ease: [0.32, 0.72, 0, 1] // Custom easing for smooth mobile feel
           }}
           // Add drag to dismiss for bottom sheets
-          {...(side === 'bottom' && {
+          {...(side === 'bottom' && enableDragToClose && {
             drag: 'y',
             dragConstraints: { top: 0, bottom: 300 },
             dragElastic: 0.1,

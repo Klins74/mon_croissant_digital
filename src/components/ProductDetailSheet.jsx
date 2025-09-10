@@ -68,7 +68,7 @@ const ProductDetailSheet = ({ product, isOpen, onClose }) => {
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent side="bottom" className="max-h-[95vh] overflow-hidden p-0">
+      <SheetContent side="bottom" enableDragToClose={false} className="max-h-[95vh] overflow-hidden p-0">
         <div className="h-full flex flex-col">
 
           {/* Header */}
@@ -97,7 +97,7 @@ const ProductDetailSheet = ({ product, isOpen, onClose }) => {
           </SheetHeader>
 
           {/* Scrollable Content */}
-          <div className="flex-1 overflow-y-auto pb-24">
+          <div className="flex-1 overflow-y-auto pb-24 will-change-transform touch-pan-y overscroll-contain">
 
               {/* Image Gallery */}
               <div className="p-4">
@@ -175,7 +175,7 @@ const ProductDetailSheet = ({ product, isOpen, onClose }) => {
 
                 {/* Tabs */}
                 <div className="mb-6">
-                  <div className="flex border-b border-border mb-4">
+                  <div className="flex border-b border-border mb-4 sticky top-0 bg-background z-10">
                     {[
                       { id: 'details', label: { RU: 'Описание', KZ: 'Сипаттама', EN: 'Details' } },
                       { id: 'ingredients', label: { RU: 'Состав', KZ: 'Құрамы', EN: 'Ingredients' } },
@@ -196,7 +196,7 @@ const ProductDetailSheet = ({ product, isOpen, onClose }) => {
                   </div>
 
                   {/* Tab Content */}
-                  <div className="min-h-[120px]">
+                  <div className="min-h-[120px] will-change-transform">
                     {activeTab === 'details' && (
                       <MotionDiv
                         initial={{ opacity: 0, y: 10 }}
