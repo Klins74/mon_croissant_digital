@@ -165,10 +165,10 @@ export const menuProducts = [
     originalPrice: null,
     weight: "65г",
     images: {
-      main: "/frencroissant/круассан_шоколадный1.jpg",
+      main: "/frencroissant/круассан_классический_1.jpg",
       gallery: [
-        "/frencroissant/круассан_шоколадный1.jpg",
-        "/frencroissant/круассан_шоколадный2.jpg"
+        "/frencroissant/круассан_классический_1.jpg",
+        "/frencroissant/круассан_классический_2.jpg"
       ]
     },
     category: 'croissants',
