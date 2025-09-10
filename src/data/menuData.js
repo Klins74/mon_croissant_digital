@@ -243,10 +243,10 @@ export const menuProducts = [
     originalPrice: null,
     weight: "75г",
     images: {
-      main: "/Фотки/Круассан с шоколадом.png",
+      main: "/frencroissant/круассан_шоколадный1.jpg",
       gallery: [
-        "/Фотки/Круассан с шоколадом.png",
-        "/Фотки/Круассан с шоколадом-2.png"
+        "/frencroissant/круассан_шоколадный1.jpg",
+        "/frencroissant/круассан_шоколадный2.jpg"
       ]
     },
     category: 'croissants',
@@ -302,7 +302,13 @@ export const menuProducts = [
     detailedDescription: "Эксклюзивный круассан с натуральным фисташковым кремом, приготовленным из отборных сицилийских фисташек. Посыпка из дробленых фисташек добавляет приятную текстуру и усиливает ореховый аромат.",
     price: 580,
     originalPrice: null,
-    image: "/Фотки/Круассан с фисташкой.png",
+    images: {
+      main: "/frencroissant/круассан_фисташка_1.jpg",
+      gallery: [
+        "/frencroissant/круассан_фисташка_1.jpg",
+        "/frencroissant/круассан_фисташка_2.jpg"
+      ]
+    },
     category: 'croissants',
     subcategory: 'filled',
     dietary: ['halal'],
@@ -335,7 +341,13 @@ export const menuProducts = [
     detailedDescription: "Деликатный круассан с кремом из молотого миндаля и миндальными лепестками. Классическое французское сочетание, которое покорит любителей орехового вкуса.",
     price: 580,
     originalPrice: null,
-    image: "/Фотки/Круассан с миндалем.png",
+    images: {
+      main: "/frencroissant/круассан_миндаль_1.jpg",
+      gallery: [
+        "/frencroissant/круассан_миндаль_1.jpg",
+        "/frencroissant/круассан_миндаль_2.jpg"
+      ]
+    },
     category: 'croissants',
     subcategory: 'filled',
     dietary: ['halal'],
@@ -368,7 +380,13 @@ export const menuProducts = [
     detailedDescription: "Ностальгический вкус детства в изысканном французском исполнении. Домашняя сгущенка с легкой карамельной ноткой идеально дополняет маслянистое тесто.",
     price: 580,
     originalPrice: null,
-    image: "/Фотки/Круассан со сгущенкой.png",
+    images: {
+      main: "/frencroissant/круассан_вареная_сгущенка1.jpg",
+      gallery: [
+        "/frencroissant/круассан_вареная_сгущенка1.jpg",
+        "/frencroissant/круассан_вареная_сгущенка2.jpg"
+      ]
+    },
     category: 'croissants',
     subcategory: 'filled',
     dietary: ['halal'],
@@ -401,7 +419,13 @@ export const menuProducts = [
     detailedDescription: "Сытный вариант круассана с качественным сыром моцарелла и свежей зеленью. Идеальный выбор для легкого завтрака или перекуса.",
     price: 550,
     originalPrice: null,
-    image: "/Фотки/Круассан с сыром.png",
+    images: {
+      main: "/frencroissant/круассан_сырный_1.jpg",
+      gallery: [
+        "/frencroissant/круассан_сырный_1.jpg",
+        "/frencroissant/круассан_сырный_2.jpg"
+      ]
+    },
     category: 'croissants',
     subcategory: 'savory',
     dietary: ['halal'],
@@ -424,6 +448,169 @@ export const menuProducts = [
       sugar: 3
     },
     tags: ["Сытное", "Сыр", "Завтрак"],
+    availableHours: "24/7"
+  },
+  {
+    id: 11,
+    name: "Круассан с малиновым крем-чиз",
+    shortName: "Малина крем-чиз",
+    description: "Слоеный круассан с нежным крем-сыром и яркой малиновой начинкой",
+    detailedDescription: "Нежный крем-чиз в сочетании с натуральным малиновым пюре. Яркий вкус и красивая подача.",
+    price: 650,
+    originalPrice: null,
+    weight: "75г",
+    images: {
+      main: "/frencroissant/круассан_малина_кремчиз_1.jpg",
+      gallery: [
+        "/frencroissant/круассан_малина_кремчиз_1.jpg",
+        "/frencroissant/круассан_малиновый_кремчиз2.jpg"
+      ]
+    },
+    category: 'croissants',
+    subcategory: 'filled',
+    dietary: ['halal'],
+    rating: 4.8,
+    reviewCount: 42,
+    inStock: true,
+    isNew: true,
+    isPopular: true,
+    isBestseller: false,
+    ingredients: "Тесто круассан, крем-чиз, малина",
+    allergens: ["Глютен", "Молочные продукты"],
+    technique: "Начинка крем-чизом и малиновым пюре",
+    prepTime: "2.5 часа",
+    nutritionalInfo: { calories: 430, protein: 8, carbs: 45, fat: 23, sugar: 22 },
+    tags: ["Крем-чиз", "Малина", "Новинка"],
+    availableHours: "24/7"
+  },
+  {
+    id: 12,
+    name: "Круассан с клубничным крем-чиз",
+    shortName: "Клубника крем-чиз",
+    description: "Нежный крем-сыр и ароматная клубника внутри хрустящего круассана",
+    detailedDescription: "Сбалансированная сладость клубники с мягким крем-чизом. Летний вкус круглый год.",
+    price: 650,
+    originalPrice: null,
+    weight: "75г",
+    images: {
+      main: "/frencroissant/круассан_клубничный_кремчиз_1.jpg",
+      gallery: [
+        "/frencroissant/круассан_клубничный_кремчиз_1.jpg",
+        "/frencroissant/круассан_клубничный_кремчиз_2.jpg"
+      ]
+    },
+    category: 'croissants',
+    subcategory: 'filled',
+    dietary: ['halal'],
+    rating: 4.8,
+    reviewCount: 36,
+    inStock: true,
+    isNew: true,
+    isPopular: true,
+    isBestseller: false,
+    ingredients: "Тесто круассан, крем-чиз, клубника",
+    allergens: ["Глютен", "Молочные продукты"],
+    technique: "Начинка крем-чизом и клубничным пюре",
+    prepTime: "2.5 часа",
+    nutritionalInfo: { calories: 430, protein: 8, carbs: 45, fat: 23, sugar: 21 },
+    tags: ["Крем-чиз", "Клубника", "Новинка"],
+    availableHours: "24/7"
+  },
+  {
+    id: 13,
+    name: "Круассан с манго крем-чиз",
+    shortName: "Манго крем-чиз",
+    description: "Экзотический вкус манго с нежным крем-сыром в хрустящем круассане",
+    detailedDescription: "Тропическая свежесть манго и мягкость крем-сыра для насыщенного вкуса.",
+    price: 650,
+    originalPrice: null,
+    weight: "75г",
+    images: {
+      main: "/frencroissant/круассан_манго_кремчиз_1.jpg",
+      gallery: [
+        "/frencroissant/круассан_манго_кремчиз_1.jpg",
+        "/frencroissant/круассан_манго_кремчиз2.jpg"
+      ]
+    },
+    category: 'croissants',
+    subcategory: 'filled',
+    dietary: ['halal'],
+    rating: 4.7,
+    reviewCount: 28,
+    inStock: true,
+    isNew: true,
+    isPopular: false,
+    isBestseller: false,
+    ingredients: "Тесто круассан, крем-чиз, манго",
+    allergens: ["Глютен", "Молочные продукты"],
+    technique: "Начинка крем-чизом и манговым пюре",
+    prepTime: "2.5 часа",
+    nutritionalInfo: { calories: 435, protein: 8, carbs: 46, fat: 23, sugar: 20 },
+    tags: ["Крем-чиз", "Манго"],
+    availableHours: "24/7"
+  },
+  {
+    id: 14,
+    name: "Кукис классический",
+    shortName: "Кукис",
+    description: "Классическое мягкое печенье с хрустящими краями",
+    detailedDescription: "Большой мягкий кукис с насыщанным вкусом ванили и карамелизованного сахара.",
+    price: 490,
+    originalPrice: null,
+    weight: "90г",
+    images: {
+      main: "/frencroissant/кукис_классический_1.jpg",
+      gallery: [
+        "/frencroissant/кукис_классический_1.jpg",
+        "/frencroissant/кукис_классический_2.jpg"
+      ]
+    },
+    category: 'pastries',
+    subcategory: 'cookies',
+    dietary: ['halal'],
+    rating: 4.8,
+    reviewCount: 51,
+    inStock: true,
+    isNew: true,
+    isPopular: true,
+    isBestseller: false,
+    ingredients: "Мука, сливочное масло, сахар, ваниль",
+    allergens: ["Глютен", "Молочные продукты", "Яйца"],
+    prepTime: "1.5 часа",
+    nutritionalInfo: { calories: 360, protein: 5, carbs: 46, fat: 16, sugar: 24 },
+    tags: ["Кукис", "Классика"],
+    availableHours: "24/7"
+  },
+  {
+    id: 15,
+    name: "Кукис шоколадный",
+    shortName: "Кукис шоколадный",
+    description: "Мягкое шоколадное печенье с кусочками темного шоколада",
+    detailedDescription: "Двойной шоколад для любителей насыщенного вкуса: какао в тесте и кусочки шоколада.",
+    price: 520,
+    originalPrice: null,
+    weight: "90г",
+    images: {
+      main: "/frencroissant/кукис_шоколадный_1.jpg",
+      gallery: [
+        "/frencroissant/кукис_шоколадный_1.jpg",
+        "/frencroissant/кукис_шоклад_2.jpg"
+      ]
+    },
+    category: 'pastries',
+    subcategory: 'cookies',
+    dietary: ['halal'],
+    rating: 4.9,
+    reviewCount: 64,
+    inStock: true,
+    isNew: true,
+    isPopular: true,
+    isBestseller: true,
+    ingredients: "Мука, какао, шоколад 70%",
+    allergens: ["Глютен", "Молочные продукты", "Яйца"],
+    prepTime: "1.5 часа",
+    nutritionalInfo: { calories: 390, protein: 6, carbs: 44, fat: 18, sugar: 26 },
+    tags: ["Кукис", "Шоколад", "Новинка"],
     availableHours: "24/7"
   },
   // Pastries
