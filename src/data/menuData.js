@@ -612,6 +612,103 @@ export const menuProducts = [
     tags: ["Кукис", "Шоколад", "Новинка"],
     availableHours: "24/7"
   },
+  // Tartlets
+  {
+    id: 16,
+    name: "Тарталетка с клубникой",
+    shortName: "Тарталетка клубника",
+    description: "Хрустящая тарталетка с заварным кремом и свежей клубникой",
+    detailedDescription: "Нежный заварной крем в песочной корзинке, украшенной сочной клубникой.",
+    price: 720,
+    originalPrice: null,
+    weight: "120г",
+    images: {
+      main: "/тарталетка_клубника_1.jpg",
+      gallery: [
+        "/тарталетка_клубника_1.jpg",
+        "/тарталетка_клубника_2.jpg"
+      ]
+    },
+    category: 'pastries',
+    subcategory: 'tartlets',
+    dietary: ['halal'],
+    rating: 4.9,
+    reviewCount: 37,
+    inStock: true,
+    isNew: true,
+    isPopular: true,
+    isBestseller: false,
+    ingredients: "Песочное тесто, заварной крем, клубника, сахарная пудра",
+    allergens: ["Глютен", "Молочные продукты", "Яйца"],
+    prepTime: "3 часа",
+    nutritionalInfo: { calories: 410, protein: 6, carbs: 48, fat: 20, sugar: 26 },
+    tags: ["Тарталетка", "Клубника"],
+    availableHours: "24/7"
+  },
+  {
+    id: 17,
+    name: "Тарталетка с манго",
+    shortName: "Тарталетка манго",
+    description: "Песочная корзинка с кремом и спелым манго",
+    detailedDescription: "Экзотическая манговая подача на нежном креме в хрустящей корзинке.",
+    price: 740,
+    originalPrice: null,
+    weight: "120г",
+    images: {
+      main: "/тарталетка_манго_1.jpg",
+      gallery: [
+        "/тарталетка_манго_1.jpg",
+        "/тарталетка_манго_2.jpg"
+      ]
+    },
+    category: 'pastries',
+    subcategory: 'tartlets',
+    dietary: ['halal'],
+    rating: 4.8,
+    reviewCount: 29,
+    inStock: true,
+    isNew: true,
+    isPopular: false,
+    isBestseller: false,
+    ingredients: "Песочное тесто, крем, манго, сахарная пудра",
+    allergens: ["Глютен", "Молочные продукты", "Яйца"],
+    prepTime: "3 часа",
+    nutritionalInfo: { calories: 420, protein: 6, carbs: 49, fat: 21, sugar: 27 },
+    tags: ["Тарталетка", "Манго"],
+    availableHours: "24/7"
+  },
+  {
+    id: 18,
+    name: "Тарталетка с ягодами",
+    shortName: "Тарталетка ягоды",
+    description: "Ассорти свежих ягод на заварном креме в песочной корзинке",
+    detailedDescription: "Сезонные ягоды на нежном креме, классическая французская подача.",
+    price: 760,
+    originalPrice: null,
+    weight: "120г",
+    images: {
+      main: "/тарталетка_ягоды_1.jpg",
+      gallery: [
+        "/тарталетка_ягоды_1.jpg",
+        "/тарталетка_ягода_2.jpg"
+      ]
+    },
+    category: 'pastries',
+    subcategory: 'tartlets',
+    dietary: ['halal'],
+    rating: 4.9,
+    reviewCount: 33,
+    inStock: true,
+    isNew: true,
+    isPopular: true,
+    isBestseller: false,
+    ingredients: "Песочное тесто, заварной крем, ассорти ягод",
+    allergens: ["Глютен", "Молочные продукты", "Яйца"],
+    prepTime: "3 часа",
+    nutritionalInfo: { calories: 415, protein: 6, carbs: 47, fat: 20, sugar: 25 },
+    tags: ["Тарталетка", "Ягоды"],
+    availableHours: "24/7"
+  },
   // Pastries
   {
     id: 7,
