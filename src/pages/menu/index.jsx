@@ -208,7 +208,7 @@ const CategorySection = ({ category, products, onViewDetails, onAddToCart, isExp
     <div ref={sectionRef} id={`category-${category.id}`} className="mb-6">
       {/* Category Header - Enhanced with burgundy theme */}
       <MotionDiv
-        className="flex items-center justify-between p-6 bg-gradient-to-r from-[#7A1F2C] via-[#8B2635] to-[#A02B3D] text-primary-foreground border border-[#6E1B27] rounded-t-2xl cursor-pointer shadow-warm hover:shadow-warm-lg"
+        className="flex items-center justify-between p-6 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground border border-primary rounded-t-2xl cursor-pointer shadow-warm hover:shadow-warm-lg filter saturate-125"
         onClick={onToggle}
         variants={cardHoverVariants}
         initial="rest"
@@ -216,14 +216,14 @@ const CategorySection = ({ category, products, onViewDetails, onAddToCart, isExp
         whileTap="rest"
       >
         <div className="flex items-center space-x-4">
-          <div className="p-3 rounded-xl bg-white/15 backdrop-blur-sm shadow-sm">
+          <div className="p-3 rounded-xl bg-white/20 backdrop-blur-sm shadow-sm">
             <Icon name={category.icon} size={24} className="text-white" />
           </div>
           <div className="flex-1">
             <h2 className="text-xl font-bold text-white">
               {t(category.name)}
             </h2>
-            <p className="text-sm text-white/85">
+            <p className="text-sm text-white/80">
               {products.length} {t({ RU: 'позиций', KZ: 'дана', EN: 'items' })} • {products.filter(p => p.inStock).length} {t({ RU: 'в наличии', KZ: 'қоймада', EN: 'available' })}
             </p>
           </div>
@@ -234,14 +234,14 @@ const CategorySection = ({ category, products, onViewDetails, onAddToCart, isExp
             <div className="text-sm font-medium text-white">
               {products.filter(p => p.inStock).length}/{products.length}
             </div>
-            <div className="text-xs text-white/80">
+            <div className="text-xs text-white/70">
               {t({ RU: 'доступно', KZ: 'бар', EN: 'available' })}
             </div>
           </div>
           <MotionDiv
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="bg-white/25 rounded-full p-2"
+            className="bg-white/20 rounded-full p-2"
           >
             <Icon name="ChevronDown" size={20} className="text-white" />
           </MotionDiv>
