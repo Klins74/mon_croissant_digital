@@ -141,7 +141,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart, language }) => {
             {/* Tags and dietary info */}
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               {product.weight && (
-                <span className="text-xs bg-muted text-muted-foreground px-3 py-1 rounded-full font-medium">
+                <span className="text-xs bg-muted/80 text-foreground px-3 py-1 rounded-full font-medium">
                   {product.weight}
                 </span>
               )}
@@ -151,7 +151,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart, language }) => {
                 </span>
               )}
               {tArray(product.tags).slice(0, 2).map((tag, index) => (
-                <span key={index} className="text-xs bg-secondary/10 text-secondary-foreground px-3 py-1 rounded-full font-medium">
+                <span key={index} className="text-xs bg-secondary/20 text-foreground px-3 py-1 rounded-full font-medium">
                   {tag}
                 </span>
               ))}
@@ -164,7 +164,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart, language }) => {
                   ₸{product.price.toLocaleString()}
                 </div>
                 {product.originalPrice && (
-                  <div className="text-sm text-muted-foreground line-through">
+                  <div className="text-sm text-foreground/80 line-through">
                     ₸{product.originalPrice.toLocaleString()}
                   </div>
                 )}
