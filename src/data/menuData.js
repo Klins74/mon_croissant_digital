@@ -168,7 +168,7 @@ export const menuProducts = [
       main: "/frencroissant/круассан_классический_1.jpg",
       gallery: [
         "/frencroissant/круассан_классический_1.jpg",
-        "/frencroissant/круассан_классический_2.jpg"
+        "/frencroissant/круассан_классический2.jpg"
       ]
     },
     category: 'croissants',
