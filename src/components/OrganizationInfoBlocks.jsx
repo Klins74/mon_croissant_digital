@@ -70,14 +70,19 @@ const OrganizationInfoBlocks = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-      {/* Organization Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-3">
-          {t(organizationInfo.name)}
-        </h1>
-        <div className="max-w-2xl mx-auto">
-          <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
-            {t(organizationInfo.certifications)}
+      {/* Organization Header - burgundy/cream with wood border */}
+      <div className="text-center mb-8 rounded-2xl border" style={{
+        background: 'linear-gradient(180deg, rgba(139,38,53,0.06) 0%, rgba(244,228,193,0.35) 100%)',
+        borderColor: 'rgba(139, 69, 19, 0.25)' // wood tone
+      }}>
+        <div className="px-4 py-6">
+          <h1 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-3">
+            {t(organizationInfo.name)}
+          </h1>
+          <div className="max-w-2xl mx-auto">
+            <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+              {t(organizationInfo.certifications)}
+            </div>
           </div>
         </div>
       </div>

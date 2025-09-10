@@ -8,23 +8,23 @@
 
 @layer base {
   :root {
-    /* Background Colors - Burgundy & Cream Theme */
-    --color-background: #FDF8F4; /* warm cream */
-    --color-foreground: #2D1810; /* dark brown */
-    --color-card: #FFFFFF; /* pure white */
-    --color-card-foreground: #2D1810; /* dark brown */
-    --color-popover: #FFFFFF; /* pure white */
-    --color-popover-foreground: #2D1810; /* dark brown */
-    --color-muted: #F5F1EC; /* light cream */
-    --color-muted-foreground: #8B6B47; /* warm brown */
+    /* Background Colors */
+    --color-background: #FEFCF8; /* cream-50 */
+    --color-foreground: #2C1810; /* dark-chocolate */
+    --color-card: #F5F2ED; /* warm-gray-50 */
+    --color-card-foreground: #2C1810; /* dark-chocolate */
+    --color-popover: #FEFCF8; /* cream-50 */
+    --color-popover-foreground: #2C1810; /* dark-chocolate */
+    --color-muted: #F5F2ED; /* warm-gray-50 */
+    --color-muted-foreground: #6B4423; /* medium-brown */
     
-    /* Brand Colors - Burgundy & Gold Theme */
-    --color-primary: #8B2635; /* deep burgundy red */
-    --color-primary-foreground: #FFFFFF; /* white text */
-    --color-secondary: #D4AF37; /* golden yellow */
-    --color-secondary-foreground: #2D1810; /* dark brown */
-    --color-accent: #F4E4C1; /* cream accent */
-    --color-accent-foreground: #2D1810; /* dark brown */
+    /* Brand Colors */
+    --color-primary: #D4A574; /* croissant-gold */
+    --color-primary-foreground: #2C1810; /* dark-chocolate */
+    --color-secondary: #8B4513; /* chocolate-brown */
+    --color-secondary-foreground: #FEFCF8; /* cream-50 */
+    --color-accent: #E8B86D; /* buttery-highlight */
+    --color-accent-foreground: #2C1810; /* dark-chocolate */
     
     /* Interactive Elements */
     --color-border: rgba(139, 69, 19, 0.2); /* chocolate-brown-20 */
@@ -230,4 +230,9 @@
   .hover\:scale-102:hover {
     transform: scale(1.02);
   }
+}
+
+@layer utilities {
+  .shadow-warm { box-shadow: var(--shadow-warm); }
+  .shadow-warm-lg { box-shadow: var(--shadow-warm-lg); }
 }
