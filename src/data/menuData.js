@@ -1,9 +1,9 @@
 // Enhanced menu data structure with i18n support
 export const organizationInfo = {
   name: {
-    RU: "Mon Croissant",
-    KZ: "Mon Croissant", 
-    EN: "Mon Croissant"
+    RU: "French Croissant",
+    KZ: "French Croissant", 
+    EN: "French Croissant"
   },
   certifications: {
     RU: "Наличие Сертификатов;\n-ХАЛАЛ\n-Евразийский Экономический Союз Декларации о Соответствии",

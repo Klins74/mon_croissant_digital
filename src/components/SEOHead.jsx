@@ -17,9 +17,9 @@ const SEOHead = ({
   // Default values
   const defaultTitle = t(organizationInfo.name);
   const defaultDescription = t({
-    RU: "Mon Croissant - французская выпечка в Алматы. Круассаны, пирожные, хлеб. Доставка 24/7. Халяль сертификат.",
-    KZ: "Mon Croissant - Алматыдағы француз наны. Круассандар, тортиктер, нан. Жеткізу 24/7. Халал сертификаты.",
-    EN: "Mon Croissant - French bakery in Almaty. Croissants, pastries, bread. Delivery 24/7. Halal certified."
+    RU: "French Croissant - французская выпечка в Алматы. Круассаны, пирожные, хлеб. Доставка 24/7. Халяль сертификат.",
+    KZ: "French Croissant - Алматыдағы француз наны. Круассандар, тортиктер, нан. Жеткізу 24/7. Халал сертификаты.",
+    EN: "French Croissant - French bakery in Almaty. Croissants, pastries, bread. Delivery 24/7. Halal certified."
   });
   const defaultImage = "/images/og-image.jpg";
   const baseUrl = "https://mon-croissant.almaty";
@@ -46,7 +46,7 @@ const SEOHead = ({
       "image": product.images?.main || product.image,
       "brand": {
         "@type": "Brand",
-        "name": "Mon Croissant"
+        "name": "French Croissant"
       },
       "offers": {
         "@type": "Offer",
@@ -55,7 +55,7 @@ const SEOHead = ({
         "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
         "seller": {
           "@type": "Organization",
-          "name": "Mon Croissant"
+          "name": "French Croissant"
         }
       },
       "aggregateRating": {
@@ -77,7 +77,7 @@ const SEOHead = ({
   const generateRestaurantStructuredData = () => ({
     "@context": "https://schema.org",
     "@type": "Bakery",
-    "name": "Mon Croissant",
+    "name": "French Croissant",
     "description": defaultDescription,
     "url": baseUrl,
     "telephone": organizationInfo.contacts.phone,
@@ -113,7 +113,7 @@ const SEOHead = ({
       <meta property="og:description" content={description || defaultDescription} />
       <meta property="og:image" content={image || defaultImage} />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:site_name" content="Mon Croissant" />
+      <meta property="og:site_name" content="French Croissant" />
       <meta property="og:locale" content={
         currentLanguage === 'RU' ? 'ru_RU' : 
         currentLanguage === 'KZ' ? 'kk_KZ' : 'en_US'
@@ -131,7 +131,7 @@ const SEOHead = ({
           <meta property="product:price:amount" content={product.price} />
           <meta property="product:price:currency" content="KZT" />
           <meta property="product:availability" content={product.inStock ? "in stock" : "out of stock"} />
-          <meta property="product:brand" content="Mon Croissant" />
+          <meta property="product:brand" content="French Croissant" />
           <meta property="product:category" content={category ? t(category.name) : ''} />
         </>
       )}

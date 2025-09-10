@@ -4,7 +4,7 @@ const TestPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground p-8">
       <h1 className="text-4xl font-bold text-foreground mb-4">
-        Mon Croissant - Тест страница
+        French Croissant - Тест страница
       </h1>
       <p className="text-lg text-muted-foreground mb-4">
         Если вы видите эту страницу, значит React работает правильно!

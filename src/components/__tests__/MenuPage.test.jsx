@@ -45,7 +45,7 @@ describe('MenuPage', () => {
     renderMenuPage();
 
     // Check if organization name is displayed
-    expect(screen.getByText('Mon Croissant')).toBeInTheDocument();
+    expect(screen.getByText('French Croissant')).toBeInTheDocument();
     
     // Check if search input is present
     expect(screen.getByPlaceholderText(/поиск по меню/i)).toBeInTheDocument();
