@@ -26,9 +26,9 @@ export const organizationInfo = {
     EN: "Orders accepted until 19:00\n(Sun-Thu: Fri-Sat until 18:00)\nMinimum order amount 10,000 tenge"
   },
   contacts: {
-    phone: "+77011133490",
-    instagram: "@mon_croissant_almaty",
-    whatsapp: "+77011133490"
+    phone: "+7 777 021 3788",
+    instagram: "sweet_home.food",
+    whatsapp: "+7 777 021 3788"
   }
 };
 

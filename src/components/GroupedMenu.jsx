@@ -53,6 +53,8 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover"
+          loading="lazy"
+          sizes="(max-width: 1024px) 25vw, 10vw"
         />
 
         {/* Badges (mini) */}

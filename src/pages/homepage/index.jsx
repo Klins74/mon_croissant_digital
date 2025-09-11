@@ -70,14 +70,7 @@ const Homepage = () => {
           onOrderNow={handleOrderNow}
           onExploreMenu={handleExploreMenu}
         />
-        {/* Live Production Counter */}
-        <LiveProductionCounter />
-        {/* Quality Assurance Section */}
-        <QualityAssuranceSection />
-        {/* Heritage Section */}
-        <HeritageSection />
-        
-        {/* Menu Section */}
+        {/* Menu Section - moved directly under Hero */}
         <section className="py-16 bg-muted/30">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-4">
@@ -94,6 +87,12 @@ const Homepage = () => {
             onAddToCart={handleAddToCart}
           />
         </section>
+        {/* Live Production Counter */}
+        <LiveProductionCounter />
+        {/* Quality Assurance Section */}
+        <QualityAssuranceSection />
+        {/* Heritage Section */}
+        <HeritageSection />
         
         {/* Delivery Zone Section */}
         <DeliveryZoneSection />

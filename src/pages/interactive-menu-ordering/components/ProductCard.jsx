@@ -28,6 +28,8 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
           src={product?.image}
           alt={product?.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+          decoding="async"
         />
         {product?.isNew && (
           <div className="absolute top-3 left-3 bg-accent text-accent-foreground px-2 py-1 rounded-full text-xs font-medium">

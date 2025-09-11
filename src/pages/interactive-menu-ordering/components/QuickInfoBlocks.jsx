@@ -67,12 +67,12 @@ const QuickInfoBlocks = () => {
           <InfoRow
             icon="Instagram"
             title="Instagram"
-            lines={["@mon_croissant_almaty", "Свежие фото выпечки", "Написать в Direct"]}
+            lines={["sweet_home.food", "Свежие фото выпечки", "Написать в Direct"]}
           />
           <InfoRow
             icon="MessageCircle"
             title="WhatsApp"
-            lines={["Быстрые заказы", "Ответы на вопросы", "Поддержка 24/7"]}
+            lines={["+7 777 021 3788", "Быстрые заказы", "Поддержка 24/7"]}
           />
         </div>
         

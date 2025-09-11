@@ -18,8 +18,8 @@ const translations = {
       certifications: "Сертификаты",
       quickLinks: "Быстрые ссылки",
       contactInfo: "Контактная информация",
-      whatsApp: "8-701-139-36-69",
-      phone: "8-701-139-36-69",
+      whatsApp: "+7 777 021 3788",
+      phone: "+7 777 021 3788",
       email: "av7004764@gmail.com",
       // New menu translations
       search: "Поиск",

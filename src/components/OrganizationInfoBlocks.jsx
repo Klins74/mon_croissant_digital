@@ -184,7 +184,7 @@ const OrganizationInfoBlocks = () => {
             </ContactButton>
             <ContactButton
               icon="MessageCircle"
-              href={`https://wa.me/${organizationInfo.contacts.whatsapp.replace('+', '')}`}
+              href={`https://wa.me/${organizationInfo.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
             >
               WhatsApp
             </ContactButton>
@@ -222,7 +222,7 @@ const OrganizationInfoBlocks = () => {
           </ContactButton>
           <ContactButton
             icon="MessageCircle"
-            href={`https://wa.me/${organizationInfo.contacts.whatsapp.replace('+', '')}`}
+            href={`https://wa.me/${organizationInfo.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
             className="bg-green-500 hover:bg-green-600"
           >
             {t({

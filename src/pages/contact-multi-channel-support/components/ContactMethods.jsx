@@ -11,7 +11,7 @@ const ContactMethods = () => {
       title: 'WhatsApp Business',
       description: 'Instant messaging for quick questions and order updates',
       icon: 'MessageSquare',
-      primary: t.common.whatsapp,
+      primary: '+7 777 021 3788',
       secondary: 'Available 24/7',
       action: 'Chat Now',
       bgColor: 'bg-green-50',
@@ -59,7 +59,7 @@ const ContactMethods = () => {
   const handleContactAction = (method) => {
     switch (method?.id) {
       case 'whatsapp':
-        window.open(`https://wa.me/${t.common.whatsapp.replace(/[^0-9]/g, '')}`, '_blank');
+        window.open(`https://wa.me/77770213788`, '_blank');
         break;
       case 'phone':
         window.location.href = `tel:${t.common.phone}`;

@@ -72,7 +72,12 @@ const HeroSection = ({ onOrderNow, onExploreMenu }) => {
               <Image
               src={src}
               alt={`Artisan baker crafting croissants ${index + 1}`}
-              className="w-full h-full object-cover golden-hour scale-110" />
+              className="w-full h-full object-cover golden-hour scale-110"
+              loading={index === currentVideoIndex ? 'eager' : 'lazy'}
+              fetchpriority={index === currentVideoIndex ? 'high' : undefined}
+              decoding="async"
+              sizes="100vw"
+              />
 
             </motion.div>
           )}

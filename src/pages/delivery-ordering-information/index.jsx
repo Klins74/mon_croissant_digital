@@ -31,7 +31,7 @@ const DeliveryOrderingInformation = () => {
   const emergencyContacts = [
     { type: 'Phone', number: t.common.phone, available: '24/7' },
     { type: 'Email', email: t.common.email, available: '24/7' },
-    { type: 'WhatsApp', number: t.common.whatsapp, available: '24/7' },
+    { type: 'WhatsApp', number: '+7 777 021 3788', available: '24/7' },
   ];
 
   return (
@@ -158,7 +158,7 @@ const DeliveryOrderingInformation = () => {
                 iconPosition="left"
                 className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
                 as={Link}
-                to={`https://wa.me/${t.common.whatsapp.replace(/[^0-9]/g, '')}`}
+                to={`https://wa.me/77770213788`}
                 target="_blank"
               >
 Написать в WhatsApp
