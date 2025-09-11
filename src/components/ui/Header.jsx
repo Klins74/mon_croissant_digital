@@ -66,9 +66,9 @@ const Header = ({ isCollapsed = false }) => {
           <div className="flex items-center">
             <Link to="/homepage" className="inline-flex items-center" aria-label="French Croissant home">
               <img
-                src="/logo.png"
+                src="/logo1.png"
                 alt="French Croissant"
-                className="h-8 sm:h-9 md:h-10 w-auto select-none"
+                className="h-10 sm:h-12 md:h-14 w-auto select-none"
                 loading="eager"
                 decoding="async"
               />

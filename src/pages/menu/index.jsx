@@ -478,9 +478,9 @@ const MenuPage = () => {
           <div className="flex items-center justify-between py-3">
             <div className="inline-flex items-center">
               <img
-                src="/logo.png"
+                src="/logo1.png"
                 alt="French Croissant"
-                className="h-8 sm:h-9 md:h-10 w-auto select-none"
+                className="h-10 sm:h-12 md:h-14 w-auto select-none"
                 loading="eager"
                 decoding="async"
               />
