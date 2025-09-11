@@ -64,7 +64,7 @@ const Homepage = () => {
       {/* Header */}
       <Header />
       {/* Main Content */}
-      <main className="pt-16">
+      <main className="pt-24">
         {/* Hero Section */}
         <HeroSection
           onOrderNow={handleOrderNow}

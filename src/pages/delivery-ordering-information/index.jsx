@@ -42,7 +42,7 @@ const DeliveryOrderingInformation = () => {
         <meta name="keywords" content="bakery delivery, 24/7 service, delivery zones, ordering guide, fresh pastries, FrenchCroissant" />
       </Helmet>
       <Header />
-      <main className="pt-16">
+      <main className="pt-24">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-primary/10 via-background to-accent/5 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

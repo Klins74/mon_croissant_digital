@@ -440,7 +440,7 @@ const InteractiveMenuOrdering = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-16">
+      <main className="pt-24">
         {/* Mobile toolbar */}
         <div className="sticky top-16 z-30 bg-background border-b border-border">
           <div className="max-w-7xl mx-auto px-4 py-3 space-y-3">
