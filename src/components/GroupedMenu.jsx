@@ -32,7 +32,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
       {/* Row layout */}
       <div className="flex items-center gap-3 p-3 lg:p-4">
         {/* Product Image */}
-        <div className="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-muted">
+        <div className="relative w-20 h-20 lg:w-24 lg:h-24 rounded-lg overflow-hidden shrink-0 bg-muted">
         {/* Fly-to-cart animation layer */}
         {isFlying && (
           <MotionDiv
@@ -80,22 +80,22 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
         {/* Middle: Name/desc */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-[13px] lg:text-sm font-medium text-foreground truncate">{product.name}</h3>
+            <h3 className="text-[14px] lg:text-base font-medium text-foreground truncate">{product.name}</h3>
             <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
               <Icon name="Star" size={12} className="text-warning fill-current" />
               <span>{product.rating}</span>
             </div>
           </div>
-          <p className="text-[12px] text-muted-foreground line-clamp-1">{product.description}</p>
+          <p className="text-[13px] lg:text-[14px] text-muted-foreground line-clamp-2">{product.description}</p>
           <button onClick={() => onViewDetails(product)} className="mt-1 text-[12px] text-primary hover:underline">Подробнее</button>
         </div>
 
         {/* Right: price + add */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <div className="text-right">
-            <div className="text-[13px] lg:text-sm font-semibold text-foreground">₸{product.price.toLocaleString()}</div>
+            <div className="text-[14px] lg:text-base font-semibold text-foreground">₸{product.price.toLocaleString()}</div>
             {product.originalPrice && (
-              <div className="text-[11px] text-muted-foreground line-through">₸{product.originalPrice.toLocaleString()}</div>
+              <div className="text-[12px] text-muted-foreground line-through">₸{product.originalPrice.toLocaleString()}</div>
             )}
           </div>
           <MotionDiv

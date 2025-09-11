@@ -61,16 +61,19 @@ const Header = ({ isCollapsed = false }) => {
       }`}
     >
       <div className="w-full">
-        <div className="flex items-center justify-between h-24 px-4 lg:px-6">
+        <div className="flex items-center justify-between h-32 md:h-36 px-4 lg:px-6">
           {/* Logo Section */}
           <div className="flex-1 flex items-center justify-center">
             <Link to="/homepage" className="inline-flex items-center w-full" aria-label="French Croissant home">
               <img
                 src="/logo1.png"
                 alt="French Croissant"
-                className="w-full max-w-[1000px] h-16 sm:h-20 md:h-24 object-contain select-none"
+                className="w-full max-w-[1400px] h-24 sm:h-32 md:h-40 object-contain select-none"
                 loading="eager"
                 decoding="async"
+                fetchpriority="high"
+                width="1400"
+                height="240"
               />
             </Link>
           </div>

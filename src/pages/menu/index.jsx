@@ -481,9 +481,12 @@ const MenuPage = () => {
               <img
                 src="/logo1.png"
                 alt="French Croissant"
-                className="w-full max-w-[1000px] h-20 sm:h-24 md:h-28 object-contain select-none"
+                className="w-full max-w-[1400px] h-24 sm:h-32 md:h-40 object-contain select-none"
                 loading="eager"
                 decoding="async"
+                fetchpriority="high"
+                width="1400"
+                height="240"
               />
             </div>
             {/* Keep language switcher accessible at right */}
