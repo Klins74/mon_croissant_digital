@@ -9,7 +9,8 @@ const ImageWithFallback = ({
   fallback = '/assets/images/no_image.png',
   loading = 'lazy',
   blurDataURL = null,
-  priority, // strip non-standard prop so it won't hit <img>
+  priority,
+  fetchpriority,
   sizes = '100vw',
   ...props 
 }) => {
@@ -104,6 +105,7 @@ const ImageWithFallback = ({
             onError={handleError}
             loading={loading}
             decoding="async"
+            fetchpriority={priority ? 'high' : fetchpriority}
             {...props}
           />
         </MotionDiv>
