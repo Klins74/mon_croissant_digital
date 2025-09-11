@@ -161,6 +161,9 @@ const SEOHead = ({
       {/* Favicon */}
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+      {/* Preload critical logo to avoid late rendering */}
+      <link rel="preload" as="image" href="/logo1.png" imagesrcset="/logo1.png 1x" imagesizes="100vw" />
     </Helmet>
   );
 };

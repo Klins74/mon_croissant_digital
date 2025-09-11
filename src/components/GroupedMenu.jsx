@@ -183,7 +183,7 @@ const CategorySection = ({ category, products, onViewDetails, onAddToCart }) => 
       </div>
 
       {/* Products List (compact rows) */}
-      <div className="mb-6 divide-y divide-border border border-border rounded-xl overflow-hidden bg-card">
+      <div className="mb-6 divide-y divide-border border border-border rounded-xl overflow-hidden bg-card will-change-transform">
         {displayProducts.map((product, index) => (
           <MotionDiv
             key={product.id}
