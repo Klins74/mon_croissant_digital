@@ -476,9 +476,15 @@ const MenuPage = () => {
       <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3">
-            <h1 className="text-xl font-bold text-foreground">
-              {t(organizationInfo.name)}
-            </h1>
+            <div className="inline-flex items-center">
+              <img
+                src="/logo.png"
+                alt="French Croissant"
+                className="h-8 sm:h-9 md:h-10 w-auto select-none"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
             <LanguageSwitcher />
           </div>
         </div>
