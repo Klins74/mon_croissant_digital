@@ -475,17 +475,21 @@ const MenuPage = () => {
       {/* Header with language switcher */}
       <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-4">
-            <div className="inline-flex items-center">
+          <div className="relative flex items-center justify-center py-4">
+            {/* Full-width logo */}
+            <div className="w-full flex justify-center">
               <img
                 src="/logo1.png"
                 alt="French Croissant"
-                className="h-12 sm:h-14 md:h-16 w-auto select-none"
+                className="w-full max-w-[1000px] h-20 sm:h-24 md:h-28 object-contain select-none"
                 loading="eager"
                 decoding="async"
               />
             </div>
-            <LanguageSwitcher />
+            {/* Keep language switcher accessible at right */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </div>
