@@ -3,6 +3,7 @@ import { MotionDiv, cardHoverVariants } from './motion/MotionWrapper';
 import { useLanguage } from '../contexts/LanguageContext';
 import { organizationInfo } from '../data/menuData';
 import Icon from './AppIcon';
+import BrandLogo from './BrandLogo';
 
 const InfoBlock = ({ icon, title, content, className = '', onClick = null }) => {
   const Component = onClick ? 'button' : 'div';
@@ -76,9 +77,9 @@ const OrganizationInfoBlocks = () => {
         borderColor: 'rgba(139, 69, 19, 0.25)' // wood tone
       }}>
         <div className="px-4 py-6">
-          <h1 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-3">
-            {t(organizationInfo.name)}
-          </h1>
+          <div className="flex justify-center mb-3">
+            <BrandLogo />
+          </div>
           <div className="max-w-2xl mx-auto">
             <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
               {t(organizationInfo.certifications)}
@@ -89,6 +90,9 @@ const OrganizationInfoBlocks = () => {
 
       {/* Values Section */}
       <div className="mb-8 p-6 bg-primary/5 border border-primary/20 rounded-2xl">
+        <div className="flex justify-center mb-4">
+          <BrandLogo compact />
+        </div>
         <div className="text-center">
           <div className="text-sm text-foreground leading-relaxed whitespace-pre-line">
             {t(organizationInfo.values)}
