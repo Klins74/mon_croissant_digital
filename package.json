@@ -67,6 +67,7 @@
     "dev": "concurrently \"npm run server\" \"npm start\"",
     "build": "vite build --sourcemap",
     "serve": "vite preview",
+    "images:webp": "node scripts/convert-to-webp.js",
     "test": "vitest --ui"
   },
   "eslintConfig": {
@@ -101,6 +102,7 @@
     "jsdom": "^26.1.0",
     "postcss": "8.4.8",
     "postcss-import": "^16.1.1",
+    "sharp": "^0.34.3",
     "tailwindcss": "3.4.6",
     "vite": "^5.0.0",
     "vite-tsconfig-paths": "3.6.0",
