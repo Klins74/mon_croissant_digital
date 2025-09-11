@@ -68,7 +68,7 @@ const Header = ({ isCollapsed = false }) => {
               <img
                 src="/logo1.png"
                 alt="French Croissant"
-                className="h-10 sm:h-12 md:h-14 w-auto select-none"
+                className="h-12 sm:h-14 md:h-16 w-auto select-none"
                 loading="eager"
                 decoding="async"
               />

@@ -475,12 +475,12 @@ const MenuPage = () => {
       {/* Header with language switcher */}
       <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3">
+          <div className="flex items-center justify-between py-4">
             <div className="inline-flex items-center">
               <img
                 src="/logo1.png"
                 alt="French Croissant"
-                className="h-10 sm:h-12 md:h-14 w-auto select-none"
+                className="h-12 sm:h-14 md:h-16 w-auto select-none"
                 loading="eager"
                 decoding="async"
               />
@@ -491,7 +491,9 @@ const MenuPage = () => {
       </div>
 
       {/* Organization Info Blocks */}
-      <OrganizationInfoBlocks />
+      <div className="mt-6">
+        <OrganizationInfoBlocks />
+      </div>
 
       {/* Sticky Category Navigation */}
       <AnimatePresence>
