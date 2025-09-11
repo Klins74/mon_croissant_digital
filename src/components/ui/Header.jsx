@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Icon from '../AppIcon';
-import BrandLogo from '../BrandLogo';
 import Button from './Button';
 import { useCart } from '../../contexts/CartContext';
 import translations from '../../translations';
@@ -64,12 +63,16 @@ const Header = ({ isCollapsed = false }) => {
       <div className="w-full">
         <div className="flex items-center justify-between h-16 px-4 lg:px-6">
           {/* Logo Section */}
-          <div className="flex items-center space-x-3">
-            <div className="hidden sm:flex items-center justify-center w-10 h-10 rounded-lg bg-[linear-gradient(180deg,#8b3a3a_0%,#6f2e2e_100%)] border border-[rgba(30,30,30,0.25)]">
-              {/* Decorative square kept for visual weight on desktop */}
-              <Icon name="Croissant" size={18} className="text-white/90" />
-            </div>
-            <BrandLogo className="drop-shadow-sm" />
+          <div className="flex items-center">
+            <Link to="/homepage" className="inline-flex items-center" aria-label="French Croissant home">
+              <img
+                src="/logo.png"
+                alt="French Croissant"
+                className="h-8 sm:h-9 md:h-10 w-auto select-none"
+                loading="eager"
+                decoding="async"
+              />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
