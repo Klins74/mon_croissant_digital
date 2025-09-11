@@ -81,7 +81,7 @@ const ImageWithFallback = ({
         </MotionDiv>
       )}
 
-      {/* Main image with fade-in */}
+      {/* Main image with fade-in (with WebP source) */}
       {isVisible && (
         <MotionDiv
           initial={{ opacity: 0 }}
@@ -95,19 +95,29 @@ const ImageWithFallback = ({
           }}
           className="absolute inset-0"
         >
-          <img
-            src={imageSrc}
-            srcSet={imageSrc ? `${imageSrc} 400w, ${imageSrc} 800w, ${imageSrc} 1200w` : undefined}
-            sizes={sizes}
-            alt={alt}
-            className={`w-full h-full object-cover rounded-lg ${className}`}
-            onLoad={handleLoad}
-            onError={handleError}
-            loading={loading}
-            decoding="async"
-            fetchpriority={priority ? 'high' : fetchpriority}
-            {...props}
-          />
+          {imageSrc ? (
+            <picture>
+              {/* Try WebP first; if file not present, browser falls back to <img> */}
+              <source
+                type="image/webp"
+                srcSet={imageSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp')}
+                sizes={sizes}
+              />
+              <img
+                src={imageSrc}
+                srcSet={`${imageSrc} 400w, ${imageSrc} 800w, ${imageSrc} 1200w`}
+                sizes={sizes}
+                alt={alt}
+                className={`w-full h-full object-cover rounded-lg ${className}`}
+                onLoad={handleLoad}
+                onError={handleError}
+                loading={loading}
+                decoding="async"
+                fetchpriority={priority ? 'high' : fetchpriority}
+                {...props}
+              />
+            </picture>
+          ) : null}
         </MotionDiv>
       )}
 
