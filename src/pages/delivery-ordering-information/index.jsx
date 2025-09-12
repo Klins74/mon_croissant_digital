@@ -5,6 +5,7 @@ import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import GroupedMenu from '../../components/GroupedMenu';
 import { useCart } from '../../contexts/CartContext';
+import ProductDetailSheet from '../../components/ProductDetailSheet';
 import { useNavigate, Link } from 'react-router-dom';
 import DeliveryZoneMap from './components/DeliveryZoneMap';
 import OrderingChannels from './components/OrderingChannels';
@@ -17,7 +18,13 @@ const DeliveryOrderingInformation = () => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
-  const handleViewDetails = () => navigate('/menu');
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [productDetailOpen, setProductDetailOpen] = useState(false);
+
+  const handleViewDetails = (product) => {
+    setSelectedProduct(product);
+    setProductDetailOpen(true);
+  };
   const handleAddToCart = (product) => addToCart(product);
   const [activeTab, setActiveTab] = useState('zones');
 
@@ -116,6 +123,16 @@ const DeliveryOrderingInformation = () => {
             <GroupedMenu onViewDetails={handleViewDetails} onAddToCart={handleAddToCart} />
           </div>
         </section>
+
+        {/* Product Detail Sheet for this page */}
+        <ProductDetailSheet
+          product={selectedProduct}
+          isOpen={productDetailOpen}
+          onClose={() => {
+            setProductDetailOpen(false);
+            setSelectedProduct(null);
+          }}
+        />
 
         {/* Navigation Tabs */}
         <section className="bg-card border-b border-border sticky top-16 z-40">
