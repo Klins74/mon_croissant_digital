@@ -34,7 +34,7 @@ const InfoBlock = ({ icon, title, content, className = '', onClick = null }) => 
   );
 };
 
-const ContactButton = ({ icon, href, children, className = '' }) => {
+const ContactButton = ({ icon, href, children, className = '', onClick = null }) => {
   return (
     <MotionDiv
       as="a"
@@ -46,6 +46,7 @@ const ContactButton = ({ icon, href, children, className = '' }) => {
       initial="rest"
       whileHover="hover"
       whileTap="rest"
+      onClick={onClick || undefined}
     >
       <Icon name={icon} size={18} />
       <span className="text-sm">{children}</span>
@@ -57,15 +58,31 @@ const OrganizationInfoBlocks = () => {
   const { t } = useLanguage();
 
   const handlePhoneClick = () => {
-    window.open(`tel:${organizationInfo.contacts.phone}`, '_self');
+    window.open(`tel:87073870029`, '_self');
   };
 
   const handleInstagramClick = () => {
-    window.open(`https://instagram.com/${organizationInfo.contacts.instagram.replace('@', '')}`, '_blank');
+    const handle = organizationInfo.contacts.instagram.replace('@', '').trim();
+    const appUrl = `instagram://user?username=${handle}`;
+    const webUrl = `https://www.instagram.com/sweet_home.food?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==`;
+    const opened = window.open(appUrl, '_blank');
+    setTimeout(() => {
+      if (!opened || opened.closed) {
+        window.open(webUrl, '_blank');
+      }
+    }, 300);
   };
 
   const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/${organizationInfo.contacts.whatsapp.replace('+', '')}`, '_blank');
+    const digits = organizationInfo.contacts.whatsapp.replace(/[^0-9]/g, '');
+    const appUrl = `whatsapp://send?phone=${digits}`;
+    const webUrl = `https://wa.me/${digits}`;
+    const opened = window.open(appUrl, '_blank');
+    setTimeout(() => {
+      if (!opened || opened.closed) {
+        window.open(webUrl, '_blank');
+      }
+    }, 300);
   };
 
   return (
@@ -178,13 +195,15 @@ const OrganizationInfoBlocks = () => {
           <div className="grid grid-cols-2 gap-3">
             <ContactButton
               icon="Instagram"
-              href={`https://instagram.com/${organizationInfo.contacts.instagram.replace('@', '')}`}
+              href={`https://www.instagram.com/sweet_home.food?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==`}
+              onClick={handleInstagramClick}
             >
               Instagram
             </ContactButton>
             <ContactButton
               icon="MessageCircle"
               href={`https://wa.me/${organizationInfo.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
+              onClick={handleWhatsAppClick}
             >
               WhatsApp
             </ContactButton>
@@ -211,7 +230,7 @@ const OrganizationInfoBlocks = () => {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <ContactButton
             icon="Phone"
-            href={`tel:${organizationInfo.contacts.phone}`}
+            href={`tel:87073870029`}
             className="bg-green-600 hover:bg-green-700"
           >
             {t({
@@ -224,6 +243,7 @@ const OrganizationInfoBlocks = () => {
             icon="MessageCircle"
             href={`https://wa.me/${organizationInfo.contacts.whatsapp.replace(/[^0-9]/g, '')}`}
             className="bg-green-500 hover:bg-green-600"
+            onClick={handleWhatsAppClick}
           >
             {t({
               RU: "Написать в WhatsApp",

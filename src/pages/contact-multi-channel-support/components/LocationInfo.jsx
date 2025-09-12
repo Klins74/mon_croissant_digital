@@ -183,7 +183,7 @@ const LocationInfo = () => {
                   iconName="Phone"
                   iconPosition="left"
                   fullWidth
-                  onClick={() => window.location.href = 'tel:+77274567890'}
+                  onClick={() => window.location.href = 'tel:87073870029'}
                 >
                   Call Store
                 </Button>
@@ -205,7 +205,13 @@ const LocationInfo = () => {
                   iconName="MessageSquare"
                   iconPosition="left"
                   fullWidth
-                  onClick={() => window.open('https://wa.me/77771234567', '_blank')}
+                  onClick={() => {
+                    const digits = '87770213788';
+                    const appUrl = `whatsapp://send?phone=${digits}`;
+                    const webUrl = `https://wa.me/${digits}`;
+                    const opened = window.open(appUrl, '_blank');
+                    setTimeout(() => { if (!opened || opened.closed) window.open(webUrl, '_blank'); }, 300);
+                  }}
                 >
                   WhatsApp
                 </Button>

@@ -59,7 +59,13 @@ const ContactMethods = () => {
   const handleContactAction = (method) => {
     switch (method?.id) {
       case 'whatsapp':
-        window.open(`https://wa.me/77770213788`, '_blank');
+        (function(){
+          const digits = '87770213788';
+          const appUrl = `whatsapp://send?phone=${digits}`;
+          const webUrl = `https://wa.me/${digits}`;
+          const opened = window.open(appUrl, '_blank');
+          setTimeout(() => { if (!opened || opened.closed) window.open(webUrl, '_blank'); }, 300);
+        })();
         break;
       case 'phone':
         window.location.href = `tel:${t.common.phone}`;

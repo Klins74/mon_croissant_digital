@@ -3,15 +3,22 @@ import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
+import GroupedMenu from '../../components/GroupedMenu';
+import { useCart } from '../../contexts/CartContext';
+import { useNavigate, Link } from 'react-router-dom';
 import DeliveryZoneMap from './components/DeliveryZoneMap';
 import OrderingChannels from './components/OrderingChannels';
 import DeliveryScheduling from './components/DeliveryScheduling';
 import PricingTransparency from './components/PricingTransparency';
 import translations from '../../translations';
-import { Link } from 'react-router-dom';
 
 const DeliveryOrderingInformation = () => {
   const t = translations.ru;
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
+
+  const handleViewDetails = () => navigate('/menu');
+  const handleAddToCart = (product) => addToCart(product);
   const [activeTab, setActiveTab] = useState('zones');
 
   const tabs = [
@@ -99,6 +106,17 @@ const DeliveryOrderingInformation = () => {
           </div>
         </section>
 
+        {/* Menu Section - directly after hero */}
+        <section className="py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-2">Наше меню</h2>
+              <p className="text-base lg:text-lg text-muted-foreground">Свежая выпечка и круассаны 24/7</p>
+            </div>
+            <GroupedMenu onViewDetails={handleViewDetails} onAddToCart={handleAddToCart} />
+          </div>
+        </section>
+
         {/* Navigation Tabs */}
         <section className="bg-card border-b border-border sticky top-16 z-40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,9 +175,13 @@ const DeliveryOrderingInformation = () => {
                 iconName="MessageCircle"
                 iconPosition="left"
                 className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-                as={Link}
-                to={`https://wa.me/77770213788`}
-                target="_blank"
+                onClick={() => {
+                  const digits = '87770213788';
+                  const appUrl = `whatsapp://send?phone=${digits}`;
+                  const webUrl = `https://wa.me/${digits}`;
+                  const opened = window.open(appUrl, '_blank');
+                  setTimeout(() => { if (!opened || opened.closed) window.open(webUrl, '_blank'); }, 300);
+                }}
               >
 Написать в WhatsApp
               </Button>

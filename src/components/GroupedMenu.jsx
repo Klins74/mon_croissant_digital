@@ -80,7 +80,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
         {/* Middle: Name/desc */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-[14px] lg:text-base font-medium text-foreground truncate">{product.name}</h3>
+            <h3 className="text-[14px] lg:text-base font-medium text-foreground leading-snug break-words">{product.name}</h3>
             <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
               <Icon name="Star" size={12} className="text-warning fill-current" />
               <span>{product.rating}</span>

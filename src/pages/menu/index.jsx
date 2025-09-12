@@ -315,12 +315,9 @@ const MenuPage = () => {
         }, 300);
       }
     } else {
-      // Expand first category by default
-      if (menuCategories.length > 0) {
-        const firstCategory = menuCategories[0].id;
-        setExpandedCategories({ [firstCategory]: true });
-        setActiveCategory(firstCategory);
-      }
+      // Expand 'pastries' (French pastries) and 'croissants' by default
+      setExpandedCategories({ pastries: true, croissants: true });
+      setActiveCategory('pastries');
     }
   }, [currentSection]);
 
@@ -497,10 +494,7 @@ const MenuPage = () => {
         </div>
       </div>
 
-      {/* Organization Info Blocks */}
-      <div className="mt-6">
-        <OrganizationInfoBlocks />
-      </div>
+      {/* Organization Info Blocks moved below the menu */}
 
       {/* Sticky Category Navigation */}
       <AnimatePresence>
@@ -548,42 +542,7 @@ const MenuPage = () => {
         )}
       </AnimatePresence>
 
-      {/* Search and Filters */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        {/* Search */}
-        <div className="relative mb-4">
-          <Icon name="Search" size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder={t({
-              RU: "Поиск по меню...",
-              KZ: "Мәзір бойынша іздеу...",
-              EN: "Search menu..."
-            })}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-          />
-        </div>
-
-        {/* Dietary Filters */}
-        <div className="flex gap-2 overflow-x-auto pb-2">
-          {dietaryFilters.map(filter => (
-            <button
-              key={filter.id}
-              onClick={() => toggleFilter(filter.id)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-lg border whitespace-nowrap transition-all ${
-                selectedFilters.includes(filter.id)
-                  ? 'bg-primary text-primary-foreground border-primary'
-                  : 'bg-card text-foreground border-border hover:bg-muted/50'
-              }`}
-            >
-              <Icon name={filter.icon} size={16} className={filter.color} />
-              <span className="text-sm font-medium">{t(filter.name)}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      
 
       {/* Menu Categories */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
@@ -631,6 +590,48 @@ const MenuPage = () => {
             </Button>
           </div>
         )}
+      </div>
+
+      {/* Organization Info Blocks now here, after the menu */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <OrganizationInfoBlocks />
+      </div>
+
+      {/* Search and Filters (moved below menu) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 mb-8">
+        {/* Search */}
+        <div className="relative mb-4">
+          <Icon name="Search" size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <input
+            type="text"
+            placeholder={t({
+              RU: "Поиск по меню...",
+              KZ: "Мәзір бойынша іздеу...",
+              EN: "Search menu..."
+            })}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-10 pr-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          />
+        </div>
+
+        {/* Dietary Filters */}
+        <div className="flex gap-2 overflow-x-auto pb-2">
+          {dietaryFilters.map(filter => (
+            <button
+              key={filter.id}
+              onClick={() => toggleFilter(filter.id)}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-lg border whitespace-nowrap transition-all ${
+                selectedFilters.includes(filter.id)
+                  ? 'bg-primary text-primary-foreground border-primary'
+                  : 'bg-card text-foreground border-border hover:bg-muted/50'
+              }`}
+            >
+              <Icon name={filter.icon} size={16} className={filter.color} />
+              <span className="text-sm font-medium">{t(filter.name)}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Product Detail Sheet */}
