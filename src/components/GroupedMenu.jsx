@@ -54,7 +54,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
           alt={product.name}
           className="w-full h-full object-cover"
           loading="lazy"
-          sizes="(max-width: 1024px) 40vw, 20vw"
+          sizes="80px"
         />
 
         {/* Badges (mini) */}
@@ -80,7 +80,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart }) => {
         {/* Middle: Name/desc */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-[14px] lg:text-base font-medium text-foreground leading-snug break-words">{product.name}</h3>
+            <h3 className="text-[14px] lg:text-base font-medium text-foreground leading-snug break-words whitespace-normal">{product.name}</h3>
             <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
               <Icon name="Star" size={12} className="text-warning fill-current" />
               <span>{product.rating}</span>

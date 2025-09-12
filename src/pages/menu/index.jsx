@@ -60,6 +60,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart, language }) => {
               alt={t(product.name)}
               className="w-full h-full object-cover"
               priority={false}
+              sizes="112px"
             />
             
             {/* Badges */}
@@ -94,7 +95,7 @@ const ProductCard = ({ product, onViewDetails, onAddToCart, language }) => {
           {/* Product Info */}
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between mb-2">
-              <h3 className="text-lg font-semibold text-foreground line-clamp-2 leading-tight">
+              <h3 className="text-lg font-semibold text-foreground leading-tight break-words">
                 {t(product.name)}
               </h3>
               <div className="flex items-center gap-1 ml-3 shrink-0">

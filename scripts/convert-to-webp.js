@@ -44,7 +44,7 @@ async function convertFile(inputPath) {
 
   try {
     await sharp(inputPath)
-      .webp({ quality: 72 })
+      .webp({ quality: 60 })
       .toFile(outputPath);
     console.log('[ok]  ', path.relative(PUBLIC_DIR, outputPath));
   } catch (err) {
